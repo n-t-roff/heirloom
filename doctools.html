@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>The Heirloom Documentation Tools: nroff, troff, dpost, etc.</TITLE>
+<LINK REV=MADE HREF="mailto:gunnarr@acm.org">
+<META NAME="description" CONTENT="nroff, troff and dpost"
+<META NAME="keywords" CONTENT="Linux, Unix, tool, utility, tools, utilities,
+troff, nroff, eqn, neqn, tbl, dpost">
+<STYLE TYPE="text/css">
+<!--
+BODY { max-width: 530pt; }
+BODY,TD,P { text-align: justify; font-size: 10pt; line-height: 14pt;
+	font-family: Verdana,Arial,Helvetica,sans-serif; }
+H1 { color: #666666; line-height: 32pt; font-size: 24pt; font-weight: normal;
+	text-align: center; }
+H2 { color: #666666; line-height: 24pt; font-size: 16pt; font-weight: normal;
+	text-align: center; }
+H3 { color: #666666; line-height: 16pt; font-size: 12pt; font-weight: bold; }
+H4 { color: #666666; line-height: 14pt; font-size: 10pt; font-weight: bold; }
+HR { width: 100%; height: 1pt; border-width: 0px; background-color: #AAAAAA; }
+HL { font-weight: bold; color: #444444 }
+ADDRESS { font-style: normal; }
+PRE { font-size: 8pt; line-height:14pt;
+	font-family: Courier; }
+//-->
+</STYLE>
+</HEAD>
+
+<BODY>
+
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="16" BORDER="0">
+<TR>
+<TD VALIGN="TOP" WIDTH="20%">
+</TD>
+<TD VALIGN="TOP" WIDTH="80%">
+<H2>
+The Heirloom Documentation Tools
+</H2>
+
+<P>
+The <i>Heirloom Documentation Tools</i> package provides
+<i>troff, nroff,</i> and related
+utilities to format manual pages and other documents for output on
+terminals and printers. They are portable and enhanced
+versions of the utilities released by Sun as part of
+<a href="http://www.opensolaris.org">OpenSolaris</a>,
+which are a variant of <i>ditroff,</i>
+which, in turn, descends to the historical Unix <i>troff</i>
+that generated output for the C/A/T phototypesetter.
+<p>
+<hl><i>nroff</i></hl>
+is most prominently used to <hl>format Unix manual pages</hl>
+for viewing them on a terminal.
+This implementation consumes relatively few system resources
+and is thus suitable for small system distributions.
+It has been enhanced to generate <hl>UTF-8 output.</hl>
+<p>
+<hl><i>troff</i></hl>
+generates <hl>PostScript output</hl>
+from the same document source code as <i>nroff.</i>
+Thus a special use of it is to prepare manual pages for printing.
+<i>troff</i> is a general-purpose typesetting processor, though.
+Significant features that have been added in this implementation are:
+<ul>
+<li>
+&ldquo;Plug-and-Play&rdquo; font handling:
+<i>troff</i> <hl>can access PostScript Type&nbsp;1,
+OpenType, and TrueType fonts directly,</hl>
+that is, it can read font metrics from <i>AFM</i>,
+OpenType, or TrueType files,
+and can instruct its <i>dpost</i> post-processor
+to include glyph data from <i>PFB</i>, <i>PFA</i>,
+OpenType, and TrueType files into the output it generates.
+</li>
+<li>
+Justification improvements
+include <hl>paragraph-at-once adjustment</hl>
+using a variant of the Knuth-Plass algorithm
+originally developed for <i>TeX</i>,
+and options to decrease word spaces
+and to dynamically change the letter spacing
+as well as the glyph widths (<hl>microtypography</hl>).
+</li>
+<li>
+Pairwise <hl>kerning</hl> of characters
+and letter space <hl>tracking</hl> are supported.
+<i>troff</i> includes a request to construct
+<hl>kerning pairs for characters from different fonts.</hl>
+</li>
+<li>
+<hl>Hanging characters</hl> can be used,
+for example, hyphens can partially or entirely
+hang over the right margin of a document.
+</li>
+<li>
+Mechanisms
+for typesetting <hl>small capitals, old-style numerals,</hl>
+and arbitrary <hl>ligatures</hl>
+e.g. using Type 1 &ldquo;expert&rdquo; or
+OpenType fonts
+are provided.
+</li>
+<li>
+Letters can be of arbitrary size,
+including <hl>fractional point sizes.</hl>
+Individual fonts can be zoomed.
+</li>
+<li>
+Text input is processed according
+to the <i>LC_CTYPE</i> environment variable.
+With a <hl>UTF-8</hl> locale,
+a large set of characters is available without the need to type
+<i>troff</i> escape sequences.
+</li>
+<li>
+<hl>Hyphenation of international languages</hl> is supported
+using the <a href="http://www.openoffice.org">OpenOffice</a> variant
+of Raph Levien's <i>LibHnj</i>,
+which is in turn based on Liang's <i>TeX</i> algorithm.
+</li>
+<li>
+International paper sizes such as <hl>A4</hl> can be configured.
+</li>
+<li>
+The <i>dpost</i> post-processor
+can generate instructions for the <hl>PDF</hl> distiller
+for the inclusion of <hl>bookmarks,</hl>
+<hl>links,</hl>
+titles, and authorship information.
+</li>
+<li>
+Most <a href="http://groff.ffii.org"><i>groff</i></a> extensions,
+like <hl>long names</hl> for requests, strings, and number registers,
+are supported.
+A special <i>groff</i> compatibility mode is also provided.
+</li>
+<li>
+Other <i>troff</i> language extensions include
+a <hl>string search</hl> request,
+<hl>output line traps,</hl>
+<hl>floating-point registers,</hl>
+and
+<hl>local variables</hl> per macro instance.
+</li>
+</ul>
+<p>
+The distribution contains a script to <hl>convert
+<a href="http://www.oasis-open.org/committees/office/">OpenDocument</a>
+files</hl> to <i>troff</i> input.
+This allows <i>troff</i> to act as typesetting application
+in a production scheme
+where authors hand in office documents.
+<HR>
+<H3>Samples, introductory documents, manuals</H3>
+<p>
+View the
+<a href="doctools/troffdemo.pdf">Troff Demonstration Page</a>
+to get an impression of what can be done with <i>troff</i>
+and PostScript fonts.
+<p>
+The <a href="doctools/quickstart.pdf">Quickstart Guide</a>
+is a short introduction for those
+who are already familiar with other versions of <i>troff</i>
+and want to explore <i>Heirloom troff</i> now.
+<p>
+Paragraph-at-once adjustment, microtypography,
+and other improvements to the adjustment mechanisms
+are presented in
+<a href="doctools/just.pdf">Justification in Heirloom Troff</a>.
+<p>
+<a href="doctools/fonts.pdf">Font Handling
+in Troff with PostScript Devices</a>
+explains how to install fonts
+and how to access their typographical features.
+<p>
+The
+<a href="doctools/troff.pdf">Nroff/Troff User's Manual</a>
+forms the reference documentation for <i>nroff</i> and <i>troff.</i>
+<p>
+Online manual pages for
+<a href="doctools/addbib.1b.html"><i>addbib</i></a>,
+<a href="doctools/checknr.1b.html"><i>checknr</i></a>,
+<a href="doctools/dpost.1.html"><i>dpost</i></a>,
+<a href="doctools/eqn.1b.html"><i>eqn</i></a>,
+<!--<a href="doctools/eqnchar.7b.html"><i>eqnchar</i></a>,-->
+<a href="doctools/grap.1.html"><i>grap</i></a>,
+<a href="doctools/lookbib.1b.html"><i>lookbib</i></a>,
+<a href="doctools/mcolor.7.html"><i>mcolor</i></a>,
+<a href="doctools/mpictures.7.html"><i>mpictures</i></a>,
+<a href="doctools/nroff.1b.html"><i>nroff</i></a>,
+<a href="doctools/otfdump.1.html"><i>otfdump</i></a>,
+<a href="doctools/pic.1.html"><i>pic</i></a>,
+<a href="doctools/picpack.1.html"><i>picpack</i></a>,
+<a href="doctools/ptx.1.html"><i>ptx</i></a>,
+<a href="doctools/refer.1b.html"><i>refer</i></a>,
+<a href="doctools/roffbib.1b.html"><i>roffbib</i></a>,
+<a href="doctools/soelim.1b.html"><i>soelim</i></a>,
+<a href="doctools/sortbib.1b.html"><i>sortbib</i></a>,
+<a href="doctools/tbl.1b.html"><i>tbl</i></a>,
+<a href="doctools/troff.1b.html"><i>troff</i></a>,
+and
+<a href="doctools/vgrind.1b.html"><i>vgrind</i></a>
+are available.
+<p>
+For installation instructions, see the <a href="http://heirloom.cvs.sourceforge.net/heirloom/heirloom-doctools/README?view=markup">README</a>.
+<p>
+The list of <a href="http://heirloom.cvs.sourceforge.net/heirloom/heirloom-doctools/CHANGES?view=markup">CHANGES</a> made since the first release.
+<p>
+Browse the <a href="http://heirloom.cvs.sourceforge.net/heirloom/heirloom-doctools/">CVS repository</a>.
+<HR>
+<H3>Download the source code</H3>
+<p>
+Use
+<pre>
+$ cvs -d:pserver:anonymous@heirloom.cvs.sourceforge.net:/cvsroot/heirloom \
+	login
+CVS password:&lt;just type return&gt;
+$ cvs -d:pserver:anonymous@heirloom.cvs.sourceforge.net:/cvsroot/heirloom \
+	co -P heirloom-doctools
+</pre>
+to retrieve a copy.
+Follow
+<a href="http://sourceforge.net/cvs/?group_id=106236">these instructions</a>
+for more information.
+If you want to report a problem, please look at the
+<a href="http://heirloom.cvs.sourceforge.net/heirloom/heirloom-doctools/CHANGES?view=markup">CHANGES</a>
+to see if it has already been resolved,
+
+<HR>
+</TD></TR></TABLE>
