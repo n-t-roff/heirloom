@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - refer (1b)</TITLE>
+<META NAME="keywords" CONTENT="refer, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!-- 	from 4.3BSD-Tahoe refer.1	6.2 (Berkeley) 5/12/86 -->
+<!--  -->
+<!--  This code contains changes by -->
+<!--       Gunnar Ritter, Freiburg i. Br., Germany, 2005. All rights reserved. -->
+<!--  -->
+<!--  Conditions 1, 2, and 4 and the no-warranty notice below apply -->
+<!--  to these changes. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--  1. Redistributions of source code must retain the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer. -->
+<!--  2. Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--  3. All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowedgement: -->
+<!--  	This product includes software developed by the University of -->
+<!--  	California, Berkeley and its contributors. -->
+<!--  4. Neither the name of the University nor the names of its contributors -->
+<!--     may be used to endorse or promote products derived from this software -->
+<!--     without specific prior written permission. -->
+<!--  -->
+<!--  THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND -->
+<!--  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE -->
+<!--  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE -->
+<!--  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL -->
+<!--  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS -->
+<!--  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) -->
+<!--  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT -->
+<!--  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY -->
+<!--  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF -->
+<!--  SUCH DAMAGE. -->
+<!--  -->
+<!--  Copyright(C) Caldera International Inc. 2001-2002. All rights reserved. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--    Redistributions of source code and documentation must retain the -->
+<!--     above copyright notice, this list of conditions and the following -->
+<!--     disclaimer. -->
+<!--    Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--    All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowledgement: -->
+<!--       This product includes software developed or owned by Caldera -->
+<!--       International, Inc. -->
+<!--    Neither the name of Caldera International, Inc. nor the names of -->
+<!--     other contributors may be used to endorse or promote products -->
+<!--     derived from this software without specific prior written permission. -->
+<!--  -->
+<!--  USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA -->
+<!--  INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR -->
+<!--  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!--  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE -->
+<!--  LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR -->
+<!--  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF -->
+<!--  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR -->
+<!--  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, -->
+<!--  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE -->
+<!--  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, -->
+<!--  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<!--  -->
+<!--  Sccsid @(#)refer.1b	1.4 (gritter) 12/12/05 -->
+<!--  -->
+<!--  -->
+<!-- .TH REFER 1 "May 12, 1986" -->
+<CENTER>
+<H1><HR><NOBR>REFER (1B)</NOBR><HR></H1>
+</CENTER>
+<!-- ignored unsupported tag .AT -->
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+refer - (BSD) find and insert literature references in documents
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Example</A><BR>
+<A HREF=#4>Files</A><BR>
+<A HREF=#5>See Also</A><BR>
+<A HREF=#6>Notes</A><BR>
+</BLOCKQUOTE>
+<A name=7>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<!-- ignored unsupported tag .ad -->
+<!-- ignored unsupported tag .nh -->
+<B>/usr/ucb/refer</B>
+[<B>-abcenPS</B>]
+[<B>-f</B><I>n</I>]
+[<B>-k</B><I>x</I>]
+[<B>-l</B><I>m</I><B>,</B><I>n</I>]
+[<B>-p&nbsp;</B><I>bib</I>]
+[<B>-s</B><I>keys</I>]
+[<B>-B</B><I>l</I><B>.</B><I>m</I>]
+[<I>file</I> ...]
+<!-- ignored unsupported tag .hy -->
+<!-- ignored unsupported tag .ad -->
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Refer</I> is a preprocessor for
+<I>nroff</I> or
+<I>troff</I>(1B)
+that finds and formats references for footnotes or endnotes.
+It is also the base for a series of programs designed to
+index, search, sort, and print stand-alone bibliographies,
+or other data entered in the appropriate form.
+<P>
+Given an incomplete citation with sufficiently precise keywords,
+<I>refer</I> will search a bibliographic database for references
+containing these keywords anywhere in the title, author, journal, etc.
+The input file (or standard input)
+is copied to standard output,
+except for lines between .[ and .] delimiters,
+which are assumed to contain keywords,
+and are replaced by information from the bibliographic database.
+The user may also search different databases,
+override particular fields, or add new fields.
+The reference data, from whatever source, are assigned to a set of
+<I>troff</I> strings.
+Macro packages such as
+<I>ms</I>(7B)
+print the finished reference text from these strings.
+By default references are flagged by footnote numbers.
+<P>
+The following options are available:
+<TABLE cellpadding=3><!-- tsb: The following options are available:
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-a</B><I>n</I> </TD><TD valign=bottom>
+Reverse the first
+<I>n</I> author names (Jones, J. A. instead of J. A. Jones).
+If
+<I>n</I> is omitted all author names are reversed.
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-b</B> </TD><TD valign=bottom>
+Bare mode: do not put any flags in text (neither numbers nor labels).
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-c</B><I>keys</I> </TD><TD valign=bottom>
+Capitalize (with C<FONT size=-2>APS</FONT> S<FONT size=-2>MALL</FONT> C<FONT size=-2>APS</FONT>)
+the fields whose key-letters are in
+<I>keys</I>. <!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-e</B> </TD><TD valign=bottom>
+Instead of leaving the references where encountered,
+accumulate them until a sequence of the form
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.[
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$LIST$
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.]
+</PRE>
+is encountered, and then write out all references collected so far.
+Collapse references to same source.
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-f</B><I>n</I> </TD><TD valign=bottom>
+Set the footnote number to
+<I>n</I> instead of the default of 1 (one).
+With labels rather than numbers,
+this flag is a no-op.
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-k</B><I>x</I> </TD><TD valign=bottom>
+Instead of numbering references, use labels as specified in a
+reference data line beginning
+<I>%x;</I> by default
+<I>x</I> is
+<B>L.</B> <!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-l</B><I>m</I><B>,</B><I>n</I> </TD><TD valign=bottom>
+Instead of numbering references, use labels made from
+the senior author&#39;s last name and the year of publication.
+Only the first
+<I>m</I> letters of the last name
+and the last
+<I>n</I> digits of the date are used.
+If either
+<I>m</I> or
+<I>n</I> is omitted the entire name or date respectively is used.
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-n</B> </TD><TD valign=bottom>
+Do not search the default file /usr/ucblib/reftools/papers/Ind.
+If there is a REFER environment variable,
+the specified file will be searched instead of the default file;
+in this case the
+<B>-n</B> flag has no effect.
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-p</B><I>&nbsp;bib</I> </TD><TD valign=bottom>
+Take the next argument
+<I>bib</I> as a file of references to be searched.
+The default file is searched last.
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-s</B><I>keys</I> </TD><TD valign=bottom>
+Sort references by fields whose key-letters are in the
+<I>keys</I> string;
+permute reference numbers in text accordingly.
+Implies
+<B>-e</B>. The key-letters in
+<I>keys</I> may be followed by a number to indicate how many such fields
+are used, with
+<B>+</B> taken as a very large number.
+The default is
+<B>AD</B> which sorts on the senior author and then date; to sort, for example,
+on all authors and then title, use
+<B>-sA+T</B>. <!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-B</B><I>l.m</I> </TD><TD valign=bottom>
+Bibliography mode.
+Take a file composed of records separated by blank lines,
+and turn them into
+<I>troff</I> input.
+Label
+<I>l</I> will be turned into the macro
+<I>.m</I> with
+<I>l</I> defaulting to
+<B>%X</B> and
+<I>.m</I> defaulting to
+<B>.AP</B> (annotation paragraph).
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-P</B> </TD><TD valign=bottom>
+Place punctuation marks .,:;?! after the reference signal,
+rather than before.
+(Periods and commas used to be done with strings.)
+<!-- ignored unsupported tag .ns -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-S</B> </TD><TD valign=bottom>
+Produce references in the Natural or Social Science format.
+</TD></TR>
+<!-- PP ends table -->
+<TR></TR></TABLE><P>To use your own references,
+put them in the format described below.
+They can be searched more rapidly by running
+<I>indxbib</I>(1B)
+on them before using
+<I>refer;</I> failure to index results in a linear search.
+When
+<I>refer</I> is used with the
+<I>eqn,</I> <I>neqn</I> or
+<I>tbl</I> preprocessors
+<I>refer</I> should be first, to minimize the volume
+of data passed through pipes.
+<P>
+The
+<I>refer</I> preprocessor and associated programs
+expect input from a file of references
+composed of records separated by blank lines.
+A record is a set of lines (fields),
+each containing one kind of information.
+Fields start on a line beginning with a &#39;&#39;%&#39;&#39;,
+followed by a key-letter, then a blank,
+and finally the contents of the field,
+and continue until the next line starting with &#39;&#39;%&#39;&#39;.
+The output ordering and formatting of fields
+is controlled by the macros specified for
+<I>nroff/troff</I> (for footnotes and endnotes) or
+<I>roffbib</I> (for stand-alone bibliographies).
+For a list of the most common key-letters
+and their corresponding fields, see
+<I>addbib</I>(1B).
+An example of a
+<I>refer</I> entry is given below.
+</BLOCKQUOTE>
+<A name=3>
+
+     <H3>EXAMPLE</H3>
+
+</A>
+<BLOCKQUOTE>
+<PRE>
+%A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M. E. Lesk
+%T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some Applications of Inverted Indexes on the UNIX System
+%B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNIX Programmer&#39;s Manual
+%V&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2b
+%I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bell Laboratories
+%C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Murray Hill, NJ
+%D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1978
+</PRE>
+</BLOCKQUOTE>
+<A name=4>
+
+     <H3>FILES</H3>
+
+</A>
+<BLOCKQUOTE>
+/usr/ucblib/reftools/papers&nbsp;directory of default publication lists
+<BR>
+/usr/ucblib/reftools  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;directory of companion programs
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+addbib(1B), sortbib(1B), roffbib(1B), indxbib(1B), lookbib(1B)
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>NOTES</H3>
+
+</A>
+<BLOCKQUOTE>
+Blank spaces at the end of lines in bibliography fields
+will cause the records to sort and reverse incorrectly.
+Sorting large numbers of references causes a core dump.
+<P>
+Written by Mike Lesk.
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>REFER (1B)</TD> <TD align=right width=33%><I>12/12/05</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/refer/refer.1b using man macros.</FONT>
+</BODY></HTML>

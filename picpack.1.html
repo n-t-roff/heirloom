@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - picpack (1)</TITLE>
+<META NAME="keywords" CONTENT="picpack, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  -->
+<!--  Changes by Gunnar Ritter, Freiburg i. Br., Germany, September 2005. -->
+<!--  -->
+<!--  Derived from Plan 9 v4 /opt/unix/plan9v4/sys/src/cmd/postscript/picpack/picpack.1 -->
+<!--  -->
+<!--  Copyright (C) 2003, Lucent Technologies Inc. and others. -->
+<!--  All Rights Reserved. -->
+<!--  -->
+<!--  Distributed under the terms of the Lucent Public License Version 1.02. -->
+<!--  -->
+<!--  Sccsid @(#)picpack.1	1.3 (gritter) 2/2/07 -->
+<CENTER>
+<H1><HR><NOBR>PICPACK (1)</NOBR><HR></H1>
+</CENTER>
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+picpack - PostScript picture packing preprocessor
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Examples</A><BR>
+<A HREF=#4>Diagnostics</A><BR>
+<A HREF=#5>Warnings</A><BR>
+<A HREF=#6>See Also</A><BR>
+</BLOCKQUOTE>
+<A name=7>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<B>/usr/ucb/picpack</B> [<B>-k</B><I>&nbsp;list</I>] [<B>-q</B>] [<I>file</I>] ...
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<B>picpack</B> copies
+<I>files</I> to stdout, expanding picture inclusion requests
+(marked by the
+<B>.BP</B> or
+<B>.PI</B> macros) into an in-line
+format that can be passed through
+<B>troff</B> and handled by
+<B>dpost</B>. If no
+<I>files</I> are specified
+or if
+<B>-</B> is one of the input
+<I>files</I> standard input is read.
+The following
+<I>options</I> are understood:
+<TABLE cellpadding=3><!-- tsb: <B>picpack</B>  -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=10% nowrap>
+<B>-k</B><I>&nbsp;list</I>
+</TD><TD valign=bottom>
+<I>list</I> is a comma- or space-separated string of words used to locate
+picture inclusion requests.
+The start of every line in the input
+<I>files</I> is compared with each word in
+<I>list .</I> If there is a match, the second string on the line is
+taken as the pathname of a picture file that is added
+to the output file.
+The default
+<I>list</I> is
+&#39;&#39;<I>.BP .PI</I>&#39;&#39;. </TD></TR>
+<TR valign=top><TD width=10% nowrap>
+<B>-q</B> </TD><TD valign=bottom>
+Suppress &#39;&#39;missing picture file&#39;&#39; error messages.
+</TD></TR>
+<!-- PP ends table -->
+<TR></TR></TABLE><P><B>picpack</B> is a trivial preprocessor that, in a sense, duplicates some of the
+picture inclusion capabilities already available in
+<B>dpost</B>. <B>picpack</B> should not be used if your formatting command line includes
+a call to
+<B>dpost</B>. Its only purpose is to combine picture files with text in a single
+file that can be passed through
+<B>troff</B> and unpacked, at some later time, by
+<B>dpost</B>. The original picture inclusion mechanism, with files are pulled in by
+<B>dpost</B>, is the preferred approach.
+</BLOCKQUOTE>
+<A name=3>
+
+     <H3>EXAMPLES</H3>
+
+</A>
+<BLOCKQUOTE>
+A typical application might be in a distributed printing environment
+where everything up to
+<B>troff</B> is run by the user and everything after
+<B>troff</B> is handled by a spooling daemon (perhaps
+<B>lp</B>). In that case the command line would be,
+<P>
+<PRE>
+&nbsp;   pic <I>file</I> | tbl | eqn | picpack | troff -mm -Tpost | lp
+</PRE>
+<P>
+<!-- ignored unsupported tag .EE -->
+A poor example, although one that should still work, would be,
+<P>
+<PRE>
+&nbsp;   pic <I>file</I> | tbl | eqn | picpack | troff -mm | dpost &gt;<I>file</I>.ps
+</PRE>
+<P>
+In this case picture inclusion requests could (and should) be handled by
+<B>dpost</B>. Running
+<B>picpack</B> is not needed or even recommended.
+It should be dropped from any pipeline that includes a call to
+<B>dpost</B>. </BLOCKQUOTE>
+<A name=4>
+
+     <H3>DIAGNOSTICS</H3>
+
+</A>
+<BLOCKQUOTE>
+A 0 exit status is returned if
+<I>files</I> were successfully processed.
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>WARNINGS</H3>
+
+</A>
+<BLOCKQUOTE>
+Combining pictures and text using the capabilities available in
+<B>dpost</B> is the recommended approach and is always guaranteed to be more
+efficient than
+<B>picpack</B>. Running
+<B>picpack</B> and
+<B>dpost</B> in the same pipeline makes little sense.
+<P>
+Using
+<B>picpack</B> will likely result in files that can no longer be reliably passed
+through other important
+<B>troff</B> postprocessors like
+<B>proof</B>. At present
+<B>picpack</B> is only guaranteed to work with
+<B>dpost</B>. </BLOCKQUOTE>
+<A name=6>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>dpost</I>(1),
+<I>troff</I>(1B)
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>PICPACK (1)</TD> <TD align=right width=33%><I>2/2/07</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/picpack/picpack.1 using man macros.</FONT>
+</BODY></HTML>

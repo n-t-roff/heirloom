@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - pic (1)</TITLE>
+<META NAME="keywords" CONTENT="pic, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  -->
+<!--  Changes by Gunnar Ritter, Freiburg i. Br., Germany, October 2005. -->
+<!--  -->
+<!--  Derived from Plan 9 v4 /opt/unix/plan9v4/sys/man/1/pic -->
+<!--  -->
+<!--  Copyright (C) 2003, Lucent Technologies Inc. and others. -->
+<!--  All Rights Reserved. -->
+<!--  -->
+<!--  Distributed under the terms of the Lucent Public License Version 1.02. -->
+<!--  -->
+<!--  Sccsid @(#)pic.1	1.7 (gritter) 2/2/07 -->
+<CENTER>
+<H1><HR><NOBR>PIC (1)</NOBR><HR></H1>
+</CENTER>
+<!--  start picture -->
+<!--  $1 is height, $2 is width, both in inches -->
+<!-- .if \\$1>0 .sp .35 -->
+<!-- .ie \\$1>0 .nr $1 \\$1 -->
+<!-- .el .nr $1 0 -->
+<!-- .in (\\n(.lu-\\$2)/2u -->
+<!-- .ne \\$1 -->
+<!-- .. -->
+<!--  end of picture -->
+<!-- .in -->
+<!-- .if \\n($1>0 .sp .65 -->
+<!-- .. -->
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+pic - troff preprocessor for drawing pictures
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>See Also</A><BR>
+</BLOCKQUOTE>
+<A name=4>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<B>/usr/ucb/pic</B> [<B>-SU</B>] [<I>files</I>]
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Pic</I> is a
+<I>troff</I>(1B)
+preprocessor for drawing figures on a typesetter.
+<I>Pic</I> code is contained between
+<B>.PS</B> and
+<B>.PE</B> lines:
+<P>
+<BLOCKQUOTE>
+<PRE>
+&#46;PS <I>optional-width</I> <I>optional-height</I>
+<I>element-list</I>
+&#46;PE
+</BLOCKQUOTE>
+</PRE>
+<P>
+or in a file mentioned in a
+<B>.PS</B> line:
+<TABLE cellpadding=3><!-- tsb: or in a file mentioned in a
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=6%>
+
+</TD><TD>
+<B>.PS</B><I> </I><B>&lt;</B><I>file</I> </TD></TR>
+<!-- LP ends table -->
+<TR></TR></TABLE><P>If
+<I>optional-width</I> is present, the picture is made that many inches wide,
+regardless of any dimensions used internally.
+The height is scaled in the same proportion unless
+<I>optional-height</I> is present.
+If
+<B>.PF</B> is used instead of
+<B>.PE</B>, the typesetting position after printing is restored to what it was
+upon entry.
+<P>
+An
+<I>element-list</I> is a list of elements:
+<P>
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>primitive  attribute-list</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>placename</I> : <I>element</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>placename</I> : <I>position</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>var</I> = <I>expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>direction</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ <I>element-list</I> }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <I>element-list</I> ]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for <I>var</I> = <I>expr</I> to <I>expr</I> by <I>expr</I> do { <I>anything</I> }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if <I>expr</I> then { <I>anything</I> } else { <I>anything</I> }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copy <I>file,</I>  copy thru <I>macro,</I>  copy <I>file</I> thru macro
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sh { <I>commandline</I> }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print <I>expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset <I>optional var-list</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>troff-command</I>
+</PRE>
+<P>
+<P>
+Elements are separated by newlines or semicolons;
+a long element may be continued by ending the line with a backslash.
+Comments are introduced by a
+<B>#</B> and terminated by a newline.
+Variable names begin with a lower case letter;
+place names begin with upper case.
+Place and variable names retain their values
+from one picture to the next.
+<P>
+After each primitive
+the current position moves in the current direction
+(<B>up</B>,<B>down</B>, <B>left</B>,<B>right</B> (default)) by the size of the primitive.
+The current position and direction are saved upon entry
+to a
+<B>{</B>...<B>}</B> block and restored upon exit.
+Elements within a block enclosed in
+<B>[</B>...<B>]</B> are treated as a unit;
+the dimensions are determined by the extreme points
+of the contained objects.
+Names, variables, and direction of motion within a block are local to that block.
+<P>
+<I>Troff-command</I> is any line that begins with a period.
+Such a line is assumed to make sense in the context where it appears;
+generally, this means only size and font changes.
+<P>
+The
+<I>primitive</I> objects are:
+<P>
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box  circle  ellipse  arc  line  arrow  spline  move  <I>text-list</I>
+</PRE>
+<P>
+<B>arrow</B> is a synonym for
+<B>line -&gt;</B>. <P>
+An
+<I>attribute-list</I> is a sequence of zero or more attributes;
+each attribute consists of a keyword, perhaps followed by a value.
+<P>
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h(eigh)t <I>expr</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wid(th) <I>expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rad(ius) <I>expr</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diam(eter) <I>expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up <I>opt-expr</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;down <I>opt-expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right <I>opt-expr</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left <I>opt-expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from <I>position</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to <I>position</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at <I>position</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with <I>corner</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by <I>expr, expr</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dotted <I>opt-expr</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dashed <I>opt-expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chop <I>opt-expr</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  &lt;-  &lt;-&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;same
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fill <I>opt-expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>text-list</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>expr</I>
+</PRE>
+<P>
+Missing attributes and values are filled in from defaults.
+Not all attributes make sense for all primitives;
+irrelevant ones are silently ignored.
+The attribute
+<B>at</B> causes the geometrical center to be put at the specified place;
+<B>with</B> causes the position on the object to be put at the specified place.
+For lines, splines and arcs,
+<B>height</B> and
+<B>width</B> refer to arrowhead size.
+A bare
+<I>expr</I> implies motion in the current direction.
+<P>
+Text is normally an attribute of some primitive;
+by default it is placed at the geometrical center of the object.
+Stand-alone text is also permitted.
+A text list
+is a list of text items:
+<P>
+<PRE>
+<I>  text-item</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..." <I>positioning ...</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sprintf("<I>format</I>", <I>expr</I>, <I>...</I>) <I>positioning ...</I>
+<I>  positioning</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;center  ljust  rjust  above  below
+</PRE>
+<P>
+If there are multiple text items for some primitive,
+they are arranged vertically and centered except as qualified.
+Positioning requests apply to each item independently.
+Text items may contain
+<I>troff</I> commands for size and font changes, local motions, etc.,
+but make sure that these are balanced
+so that the entering state is restored before exiting.
+<P>
+A position is ultimately an
+<I>x,y</I> coordinate pair, but it may be specified in other ways.
+<P>
+<PRE>
+<I>  position</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>expr, expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>place</I> &#177; <I>expr, expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>place</I> &#177; ( <I>expr, expr</I> )
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( <I>position</I>,<I> position</I> )<I>x</I> from one, <I>y</I> the other
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>expr</I> [of the way] between <I>position</I> and <I>position</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>expr</I> &lt; <I>position</I> , <I>position</I> &gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( <I>position</I> )
+<P>
+<I>  place</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>placename</I> <I>optional-corner</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>corner</I> of <I>placename</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>nth</I> <I>primitive</I> <I>optional-corner</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>corner</I> of <I>nth</I> <I>primitive</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here
+</PRE>
+<P>
+An
+<I>optional-corner</I> is one of the eight compass points
+or the center or the start or end of a primitive.
+<P>
+<PRE>
+<I>  optional-corner</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.n  .e  .w  .s  .ne  .se  .nw  .sw  .c  .start  .end
+<I>  corner</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top  bot  left  right  start  end
+</PRE>
+<P>
+Each object in a picture has an ordinal number;
+<I>nth</I> refers to this.
+<P>
+<PRE>
+<I>  nth</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>n</I>th<I>,     n</I>th last
+</PRE>
+<P>
+<P>
+The built-in variables and their default values are:
+<P>
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boxwid 0.75&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boxht 0.5
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circlerad 0.25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arcrad 0.25
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ellipsewid 0.75&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ellipseht 0.5
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linewid 0.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lineht 0.5
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;movewid 0.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveht 0.5
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;textwid 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;textht 0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowwid 0.05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowht 0.1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dashwid 0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrowhead 2
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale 1
+</PRE>
+<P>
+These may be changed at any time,
+and the new values remain in force from picture to picture until changed again
+or reset by a
+<!-- ignored unsupported tag .L -->
+statement.
+Variables changed within
+<B>[</B> and
+<B>]</B> revert to their previous value upon exit from the block.
+Dimensions are divided by
+<B>scale</B> during output.
+<P>
+Expressions in
+<I>pic</I> are evaluated in floating point.
+All numbers representing dimensions are taken to be in inches.
+<P>
+<PRE>
+<I>  expr</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>expr</I> <I>op</I> <I>expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <I>expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! <I>expr</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( <I>expr</I> )
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>place</I> .x  <I>place</I> .y  <I>place</I> .ht  <I>place</I> .wid  <I>place</I> .rad
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sin(<I>expr</I>)  cos(<I>expr</I>)  atan2(<I>expr,expr</I>)  log(<I>expr</I>)  exp(<I>expr</I>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqrt(<I>expr</I>)  max(<I>expr,expr</I>)  min(<I>expr,expr</I>)  int(<I>expr</I>)  rand()
+<I>  op</I>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+  -  *  /  %  &lt;  &lt;=  &gt;  &gt;=  ==  !=  &amp;&  ||
+</PRE>
+<P>
+<P>
+The
+<B>define</B> and
+<B>undef</B> statements are not part of the grammar.
+<P>
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;define <I>name</I> { <I>replacement text</I> }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undef <I>name</I>
+</PRE>
+<P>
+Occurrences of
+<B>$1</B>, <B>$2</B>, etc.,
+in the replacement text
+will be replaced by the corresponding arguments if
+<I>name</I> is invoked as
+<P>
+<PRE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>name</I>(<I>arg1</I>, <I>arg2</I>, ...)
+</PRE>
+<P>
+Non-existent arguments are replaced by null strings.
+Replacement text
+may contain newlines.
+The
+<B>undef</B> statement removes the definition of a macro.
+<P>
+The
+<B>-S</B> command line option will disable execution of
+&#39;<B>sh</B>&#39; command elements.
+<B>-U</B> reverts the effect of a previous
+<I>-S</I>. <!-- .SH EXAMPLES -->
+<!-- .sp -->
+<!-- .nf -->
+<!-- arrow "input" above; box "process"; arrow "output" above -->
+<!-- move -->
+<!-- A: ellipse  -->
+<!--    circle rad .1 with .w at A.e -->
+<!--    circle rad .05 at 0.5 <A.c, A.ne> -->
+<!--    circle rad .065 at 0.5 <A.c, A.ne> -->
+<!--    spline from last circle.nw left .25 then left .05 down .05 -->
+<!--    arc from A.c to A.se rad 0.5 -->
+<!--    for i = 1 to 10 do { line from A.s+.025*i,.01*i down i/50 }  -->
+<!-- .fi -->
+<!-- .sp -->
+<!-- .PP -->
+<!-- .PS -->
+<!-- arrow "input" above; box "process"; arrow "output" above -->
+<!-- move -->
+<!-- A: ellipse  -->
+<!--    circle rad .1 with .w at A.e -->
+<!--    circle rad .05 at 0.5 <A.c, A.ne> -->
+<!--    circle rad .065 at 0.5 <A.c, A.ne> -->
+<!--    spline from last circle.nw left .25 then left .05 down .05 -->
+<!--    arc from A.c to A.se rad 0.5 -->
+<!--    for i = 1 to 10 do { line from A.s+.025*i,.01*i down i/50 }  -->
+<!-- .PE -->
+<!-- .SH SOURCE -->
+<!-- .B /sys/src/cmd/pic -->
+</BLOCKQUOTE>
+<A name=3>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>grap</I>(1),
+<I>troff</I>(1B)
+<BR>
+B. W. Kernighan,
+&#39;&#39;PIC&#151;a Graphics Language for Typesetting&#39;&#39;,
+<I></I> Unix Research System Programmer&#39;s Manual,
+Tenth Edition, Volume 2
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>PIC (1)</TD> <TD align=right width=33%><I>2/2/07</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/pic/pic.1 using man macros.</FONT>
+</BODY></HTML>

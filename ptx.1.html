@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - ptx (1)</TITLE>
+<META NAME="keywords" CONTENT="ptx, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  -->
+<!--  Sccsid @(#)ptx.1	1.6 (gritter) 2/2/07 -->
+<!--  Parts taken from ptx(1), Unix 7th edition: -->
+<!--  Copyright(C) Caldera International Inc. 2001-2002. All rights reserved. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--    Redistributions of source code and documentation must retain the -->
+<!--     above copyright notice, this list of conditions and the following -->
+<!--     disclaimer. -->
+<!--    Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--    All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowledgement: -->
+<!--       This product includes software developed or owned by Caldera -->
+<!--       International, Inc. -->
+<!--    Neither the name of Caldera International, Inc. nor the names of -->
+<!--     other contributors may be used to endorse or promote products -->
+<!--     derived from this software without specific prior written permission. -->
+<!--  -->
+<!--  USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA -->
+<!--  INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR -->
+<!--  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!--  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE -->
+<!--  LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR -->
+<!--  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF -->
+<!--  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR -->
+<!--  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, -->
+<!--  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE -->
+<!--  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, -->
+<!--  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<CENTER>
+<H1><HR><NOBR>PTX (1)</NOBR><HR></H1>
+</CENTER>
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+ptx - permuted index
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Environment Variables</A><BR>
+<A HREF=#4>Files</A><BR>
+<A HREF=#5>Notes</A><BR>
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<!-- ignored unsupported tag .ad -->
+<!-- ignored unsupported tag .nh -->
+<B>/usr/ucb/ptx</B>
+[<B>-ftr</B>]
+[<B>-w</B><I>&nbsp;n</I>]
+[<B>-g</B><I>&nbsp;n</I>]
+[<B>-o</B><I>&nbsp;only</I>]
+[<B>-i</B><I>&nbsp;ignore</I>]
+[<B>-b</B><I>&nbsp;break</I>]
+[<I>input&nbsp;</I>[<I>output</I>]]
+<!-- ignored unsupported tag .hy -->
+<!-- ignored unsupported tag .ad -->
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Ptx</I> generates a permuted index to file
+<I>input</I> on file
+<I>output</I> (standard input and output default).
+It has three phases: the first does the permutation, generating
+one line for each keyword in an input line.
+The keyword is rotated to the front.
+The permuted file is then
+sorted.
+Finally, the sorted lines are rotated so the keyword
+comes at the middle of the page.
+<I>Ptx</I> produces output in the form:
+<TABLE cellpadding=3><!-- tsb: <I>Ptx</I>  -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=6%>
+
+</TD><TD>
+&#46;xx "tail" "before keyword" "keyword and after" "head"
+</TD></TR>
+<TR><TD colspan=2>
+where .xx may be an
+<I>nroff</I> or
+<I>troff</I>(1B)
+macro
+for user-defined formatting.
+Once choice for this macro is supplied in the &#39;-mptx&#39;
+macro package.
+The
+<I>before keyword</I> and
+<I>keyword and after</I> fields incorporate as much of the line as will fit
+around the keyword when it is printed at the middle of the page.
+<I>Tail</I> and
+<I>head,</I> at least one of which is an empty string "",
+are wrapped-around pieces small enough to fit
+in the unused space at the opposite end of the line.
+When original text must be discarded, &#39;/&#39; marks the spot.
+</TD></TR>
+<TR><TD colspan=2>
+The following options can be applied:
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-f</B> </TD><TD valign=bottom>
+Fold upper and lower case letters for sorting.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-t</B> </TD><TD valign=bottom>
+Prepare the output for the phototypesetter,
+i.e. set the default line length to 100 characters.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-w</B><I> n</I> </TD><TD valign=bottom>
+Use the next argument,
+<I>n,</I> as the width of the output line.
+The default line length is 72 characters.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-g</B><I> n</I> </TD><TD valign=bottom>
+Use the next argument,
+<I>n,</I> as the number of characters to allow for each gap
+among the four parts of the line as finally printed.
+The default gap is 3 characters.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-o</B> only </TD><TD valign=bottom>
+Use as keywords only the words given in the <I>only</I> file.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B>-i</B> ignore </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Do not use as keywords any words given in the
+<I></I> ignore
+file.
+If the <B>-</B><I>i</I> and <B>-</B><I>o</I> options are missing, use /usr/ucblib/eign
+as the
+<I></I> ignore
+file.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B>-b</B> break </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Use the characters in the
+<I></I> break
+file to separate words.
+In any case, tab, newline, and space characters are always used as break characters.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>-r</B> </TD><TD valign=bottom>
+Take any leading nonblank characters of each input line to
+be a reference identifier (as to a page or chapter)
+separate from the text of the line.
+Attach that identifier as a 5th field on each output line.
+</TD></TR>
+<TR></TR></TABLE><P></BLOCKQUOTE>
+<A name=3>
+
+     <H3>ENVIRONMENT VARIABLES</H3>
+
+</A>
+<BLOCKQUOTE>
+<TABLE cellpadding=3>
+<TR valign=top><TD colspan=2>
+<B>LANG</B>, <B>LC_ALL</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+See
+<I>locale</I>(7).
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B>LC_COLLATE</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Determines the sort order.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B>LC_CTYPE</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Determines the mapping of bytes to characters.
+</TD></TR>
+<TR></TR></TABLE><P></BLOCKQUOTE>
+<A name=4>
+
+     <H3>FILES</H3>
+
+</A>
+<BLOCKQUOTE>
+/usr/5bin/sort
+<BR>
+/usr/ucblib/eign
+<BR>
+/usr/ucblib/doctools/tmac/ptx
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>NOTES</H3>
+
+</A>
+<BLOCKQUOTE>
+Line length counts do not account for overstriking or
+proportional spacing.
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>PTX (1)</TD> <TD align=right width=33%><I>2/2/07</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/ptx/ptx.1 using man macros.</FONT>
+</BODY></HTML>

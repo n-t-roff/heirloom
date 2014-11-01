@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - nroff (1b)</TITLE>
+<META NAME="keywords" CONTENT="nroff, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  -->
+<!--  Sccsid @(#)nroff.1b	1.13 (gritter) 9/4/06 -->
+<!--  Derived from troff(1), Unix 7th edition: -->
+<!--  Copyright(C) Caldera International Inc. 2001-2002. All rights reserved. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--    Redistributions of source code and documentation must retain the -->
+<!--     above copyright notice, this list of conditions and the following -->
+<!--     disclaimer. -->
+<!--    Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--    All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowledgement: -->
+<!--       This product includes software developed or owned by Caldera -->
+<!--       International, Inc. -->
+<!--    Neither the name of Caldera International, Inc. nor the names of -->
+<!--     other contributors may be used to endorse or promote products -->
+<!--     derived from this software without specific prior written permission. -->
+<!--  -->
+<!--  USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA -->
+<!--  INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR -->
+<!--  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!--  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE -->
+<!--  LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR -->
+<!--  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF -->
+<!--  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR -->
+<!--  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, -->
+<!--  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE -->
+<!--  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, -->
+<!--  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<CENTER>
+<H1><HR><NOBR>NROFF (1B)</NOBR><HR></H1>
+</CENTER>
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+nroff - (BSD) format documents for display or line-printer
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Environment Variables</A><BR>
+<A HREF=#4>Files</A><BR>
+<A HREF=#5>See Also</A><BR>
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<!-- ignored unsupported tag .ad -->
+<!-- ignored unsupported tag .nh -->
+<B>/usr/ucb/nroff</B>
+[<B>-ehiqz</B>]
+[<B>-d</B><I>aS</I>]
+[<B>-d</B><I>a</I><B>=</B><I>S</I>]
+[<B>-F</B><I>fontdir</I>]
+[<B>-m</B><I>name</I>]
+[<B>-n</B><I>N</I>]
+[<B>-o</B><I>list</I>]
+[<B>-r</B><I>aN</I>]
+[<B>-r</B><I>a</I><B>=</B><I>N</I>]
+[<B>-s</B><I>N</I>]
+[<B>-T</B><I>name</I>]
+[<B>-u</B><I>N</I>]
+[<B>-x</B><I>N</I>]
+<!-- ignored unsupported tag .hy -->
+<!-- ignored unsupported tag .ad -->
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>nroff</I> formats text in the named
+<I>files</I> for typewriter-like devices.
+Its capabilities are described in the
+<I>Nroff/Troff user&#39;s manual.</I> <P>
+If no
+<I>file</I> argument is present, the standard input is read.
+An argument consisting of a single minus
+(<B>-</B>) is taken to be
+a file name corresponding to the standard input.
+The options, which may appear in any order so long as they appear
+before the files, are:
+<TABLE cellpadding=3><!-- tsb: If no
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-o</B><I>list</I> </TD><TD valign=bottom>
+Print only pages whose page numbers appear in
+the comma-separated
+<I>list</I> of numbers and ranges.
+A range
+<I>N</I><B>-</B><I>M</I> means pages
+<I>N</I> through
+<I>M</I>; an initial
+<I>-N</I> means
+from the beginning to page
+<I>N</I>; and a final
+<I>N</I>- means
+from
+<I>N</I> to the end.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-n</B><I>N</I> </TD><TD valign=bottom>
+Number first generated page
+<I>N</I>. </TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-s</B><I>N</I> </TD><TD valign=bottom>
+Stop every
+<I>N</I> pages.
+<I>Nroff</I> will halt prior to every
+<I>N</I> pages (default
+<I>N</I>=1) to allow paper loading or
+changing, and will resume upon receipt of a newline.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-m</B><I>name</I> </TD><TD valign=bottom>
+Prepend the macro file
+<B>/usr/ucblib/doctools/tmac/tmac.</B><I>name</I> to the input
+<I>files</I>. </TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-r</B><I>aN</I> </TD><TD valign=bottom>
+Set register
+<I>a</I> (one-character) to
+<I>N</I>. </TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-r</B><I>a</I><B>=</B><I>N</I> </TD><TD valign=bottom>
+Set register
+<I>a</I> (may be more than one character) to
+<I>N</I>. </TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-d</B><I>aN</I> </TD><TD valign=bottom>
+Define string
+<I>a</I> (one-character) to
+<I>S</I>. </TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-d</B><I>a</I><B>=</B><I>N</I> </TD><TD valign=bottom>
+Define string
+<I>a</I> (may be more than one character) to
+<I>S</I>. </TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-i</B> </TD><TD valign=bottom>
+Read standard input after the input files are exhausted.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-q</B> </TD><TD valign=bottom>
+Invoke the simultaneous input-output mode of the
+<B>rd</B> request.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-z</B> </TD><TD valign=bottom>
+Check syntax only;
+do not generate any output
+except for error messages.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-F</B><I>fontdir</I> </TD><TD valign=bottom>
+Use the directory
+<I>fontdir</I> to locate font files.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-u N</B> </TD><TD valign=bottom>
+Set the emboldening amount,
+i.e. the number of times a character is printed
+to simulate bold output,
+to
+<I>N</I>. </TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-T</B><I>name</I> </TD><TD valign=bottom>
+Prepare output for specified terminal.
+Known
+<I>names</I> are
+<B>37</B> for the (default)
+Teletype Corporation Model 37 terminal,
+<B>lp</B> for any line printer or terminal without half-line capability,
+<B>tn300</B> for the GE TermiNet&nbsp;300,
+<B>300S</B> for the <FONT size=-1>DASI</FONT>-300S,
+<B>300</B> for the <FONT size=-1>DASI</FONT>-300,
+and
+<B>450</B> for the <FONT size=-1>DASI</FONT>-450
+(Diablo Hyterm).
+A special
+<I>name</I>, <B>locale</B>, is also supported.
+It generates UTF-8 output if permitted by
+the current locale,
+and has the same effect as
+<I>lp</I> otherwise.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-e</B> </TD><TD valign=bottom>
+Produce equally-spaced words in adjusted
+lines, using full terminal resolution.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-h</B> </TD><TD valign=bottom>
+Use output tabs during horizontal spacing
+to speed output and reduce output character count.
+Tab settings are assumed to be every
+8 nominal character widths.
+</TD></TR>
+<TR valign=top><TD width=7.5% nowrap>
+<B>-x</B><I>N</I> </TD><TD valign=bottom>
+Enable extensions to previous versions of
+<I>nroff</I> at level
+<I>N</I>. Level 0 disables any extensions;
+level 1 enables all extensions
+except for long requests and request arguments;
+level 2 enables these in addition
+but executes short requests which are prefixes of undefined long requests;
+level 3 ignores undefined long requests.
+</TD></TR>
+<TR></TR></TABLE><P></BLOCKQUOTE>
+<A name=3>
+
+     <H3>ENVIRONMENT VARIABLES</H3>
+
+</A>
+<BLOCKQUOTE>
+<TABLE cellpadding=3>
+<TR valign=top><TD colspan=2>
+<B>LANG</B>, <B>LC_ALL</B> </TD></TR><TR valign=top><TD width=7.5%>&nbsp;</TD><TD>
+See
+<I>locale</I>(7).
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B>LC_CTYPE</B> </TD></TR><TR valign=top><TD width=7.5%>&nbsp;</TD><TD>
+Determines the mapping
+of bytes to characters,
+and the choice of output characters with the
+<I>-Tlocale</I> option.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B>TYPESETTER</B> </TD></TR><TR valign=top><TD width=7.5%>&nbsp;</TD><TD>
+Specifies a device name as with the
+<I>-T</I> option.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B>TROFFMACS</B> </TD></TR><TR valign=top><TD width=7.5%>&nbsp;</TD><TD>
+Specifies the location to search for macro files with the
+<I>-m</I> option.
+This string forms a prefix to which the macro package name
+is immediately appended.
+Thus to make &#39;-mname&#39; work with a file &#39;/path/to/tmac.name&#39;,
+use &#39;TROFFMACS=/path/to/tmac.&#39;
+</TD></TR>
+<TR></TR></TABLE><P></BLOCKQUOTE>
+<A name=4>
+
+     <H3>FILES</H3>
+
+</A>
+<BLOCKQUOTE>
+/tmp/ta*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temporary file
+<BR>
+/usr/ucblib/doctools/tmac/*&nbsp;standard macro files
+<BR>
+/usr/ucblib/doctools/nterm/*terminal driving tables
+<!-- .br -->
+<!-- /usr/ucblib/doctools/font/*	font width tables for -->
+<!-- .I troff -->
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+J. F. Ossanna,
+<I>Nroff/Troff user&#39;s manual</I> <BR>
+B. W. Kernighan,
+<I></I> A TROFF Tutorial
+<BR>
+eqn(1B), tbl(1B)
+<BR>
+col(1)
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>NROFF (1B)</TD> <TD align=right width=33%><I>9/4/06</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/troff/nroff.d/nroff.1b using man macros.</FONT>
+</BODY></HTML>

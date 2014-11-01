@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - roffbib (1b)</TITLE>
+<META NAME="keywords" CONTENT="roffbib, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  Copyright (c) 1983 Regents of the University of California. -->
+<!--  All rights reserved. -->
+<!--  -->
+<!--  This code contains changes by -->
+<!--       Gunnar Ritter, Freiburg i. Br., Germany, 2005. All rights reserved. -->
+<!--  -->
+<!--  Conditions 1, 2, and 4 and the no-warranty notice below apply -->
+<!--  to these changes. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--  1. Redistributions of source code must retain the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer. -->
+<!--  2. Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--  3. All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowedgement: -->
+<!--  	This product includes software developed by the University of -->
+<!--  	California, Berkeley and its contributors. -->
+<!--  4. Neither the name of the University nor the names of its contributors -->
+<!--     may be used to endorse or promote products derived from this software -->
+<!--     without specific prior written permission. -->
+<!--  -->
+<!--  THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND -->
+<!--  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE -->
+<!--  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE -->
+<!--  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL -->
+<!--  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS -->
+<!--  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) -->
+<!--  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT -->
+<!--  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY -->
+<!--  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF -->
+<!--  SUCH DAMAGE. -->
+<!--  -->
+<!--  Copyright(C) Caldera International Inc. 2001-2002. All rights reserved. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--    Redistributions of source code and documentation must retain the -->
+<!--     above copyright notice, this list of conditions and the following -->
+<!--     disclaimer. -->
+<!--    Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--    All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowledgement: -->
+<!--       This product includes software developed or owned by Caldera -->
+<!--       International, Inc. -->
+<!--    Neither the name of Caldera International, Inc. nor the names of -->
+<!--     other contributors may be used to endorse or promote products -->
+<!--     derived from this software without specific prior written permission. -->
+<!--  -->
+<!--  USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA -->
+<!--  INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR -->
+<!--  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!--  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE -->
+<!--  LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR -->
+<!--  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF -->
+<!--  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR -->
+<!--  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, -->
+<!--  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE -->
+<!--  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, -->
+<!--  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<!--  -->
+<!--  Sccsid @(#)roffbib.1b	1.4 (gritter) 12/12/05 -->
+<!--  -->
+<!--  -->
+<!-- 	from 4.3BSD-Tahoe roffbib.1	6.2 (Berkeley) 5/7/86 -->
+<!--  -->
+<!-- .TH ROFFBIB 1 "May 7, 1986" -->
+<CENTER>
+<H1><HR><NOBR>ROFFBIB (1B)</NOBR><HR></H1>
+</CENTER>
+<!-- ignored unsupported tag .UC -->
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+roffbib - (BSD) run off bibliographic database
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Files</A><BR>
+<A HREF=#4>See Also</A><BR>
+<A HREF=#5>Notes</A><BR>
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<!-- ignored unsupported tag .ad -->
+<!-- ignored unsupported tag .nh -->
+<B>/usr/ucb/roffbib</B>
+[<B>-ehnorsxVQ</B>]
+[<B>-T</B><I>term</I>]
+[<B>-m</B><I>mac</I>]
+[<I>file&nbsp;</I>...]
+<!-- ignored unsupported tag .hy -->
+<!-- ignored unsupported tag .ad -->
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Roffbib</I> prints out all records in a bibliographic database,
+in bibliography format rather than as footnotes or endnotes.
+Generally it is used in conjunction with
+<I>sortbib</I>: <P>
+<BLOCKQUOTE>
+sortbib  database | roffbib
+</BLOCKQUOTE>
+<P>
+<I>Roffbib</I> accepts most of the options understood by
+<I>nroff</I>(1B),
+most importantly the
+<B>-T</B> flag to specify terminal type.
+<P>
+If abstracts or comments are entered following the %X field key,
+<I>roffbib</I> will format them into paragraphs for an annotated bibliography.
+Several %X fields may be given if several
+annotation paragraphs are desired.
+The
+<B>-x</B> flag will suppress the printing of these abstracts.
+<P>
+A user-defined set of macros
+may be specified after the
+<B>-m</B> option.
+There should be a space between the
+<B>-m</B> and the macro filename.
+This set of macros will replace the ones
+defined in /usr/ucblib/doctools/tmac/bib.
+The
+<B>-V</B> flag will send output to the Versatec; the
+<B>-Q</B> flag will queue output for the phototypesetter.
+<P>
+Four command-line registers control formatting style
+of the bibliography, much like the number registers of
+<I>ms</I>(7B).
+The command-line argument
+<B>-r</B>N1 will number
+the references starting at one (1).
+The flag
+<B>-r</B>V2 will double space the bibliography,
+while
+<B>-r</B>V1 will double space references
+but single space annotation paragraphs.
+The line length can be changed from the default 6.5 inches
+to 6 inches with the
+<B>-r</B>L6i argument,
+and the page offset can be set from the default of 0
+to one inch by specifying
+<B>-r</B>O1i (capital O, not zero).
+Note: with the
+<B>-V</B> and
+<B>-Q</B> flags
+the default page offset is already one inch.
+</BLOCKQUOTE>
+<A name=3>
+
+     <H3>FILES</H3>
+
+</A>
+<BLOCKQUOTE>
+<PRE>
+/usr/ucblib/doctools/tmac/bib&nbsp;file of macros used by <I>nroff/troff</I>
+</PRE>
+</BLOCKQUOTE>
+<A name=4>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+refer(1B), addbib(1B), sortbib(1B), indxbib(1B), lookbib(1B)
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>NOTES</H3>
+
+</A>
+<BLOCKQUOTE>
+Users have to rewrite macros
+to create customized formats.
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>ROFFBIB (1B)</TD> <TD align=right width=33%><I>12/12/05</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/refer/roffbib.1b using man macros.</FONT>
+</BODY></HTML>

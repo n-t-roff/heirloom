@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - lookbib (1b)</TITLE>
+<META NAME="keywords" CONTENT="lookbib, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  Copyright (c) 1983 Regents of the University of California. -->
+<!--  All rights reserved. -->
+<!--  -->
+<!--  This code contains changes by -->
+<!--       Gunnar Ritter, Freiburg i. Br., Germany, 2005. All rights reserved. -->
+<!--  -->
+<!--  Conditions 1, 2, and 4 and the no-warranty notice below apply -->
+<!--  to these changes. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--  1. Redistributions of source code must retain the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer. -->
+<!--  2. Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--  3. All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowedgement: -->
+<!--  	This product includes software developed by the University of -->
+<!--  	California, Berkeley and its contributors. -->
+<!--  4. Neither the name of the University nor the names of its contributors -->
+<!--     may be used to endorse or promote products derived from this software -->
+<!--     without specific prior written permission. -->
+<!--  -->
+<!--  THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND -->
+<!--  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE -->
+<!--  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE -->
+<!--  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL -->
+<!--  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS -->
+<!--  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) -->
+<!--  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT -->
+<!--  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY -->
+<!--  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF -->
+<!--  SUCH DAMAGE. -->
+<!--  -->
+<!--  Copyright(C) Caldera International Inc. 2001-2002. All rights reserved. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--    Redistributions of source code and documentation must retain the -->
+<!--     above copyright notice, this list of conditions and the following -->
+<!--     disclaimer. -->
+<!--    Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--    All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowledgement: -->
+<!--       This product includes software developed or owned by Caldera -->
+<!--       International, Inc. -->
+<!--    Neither the name of Caldera International, Inc. nor the names of -->
+<!--     other contributors may be used to endorse or promote products -->
+<!--     derived from this software without specific prior written permission. -->
+<!--  -->
+<!--  USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA -->
+<!--  INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR -->
+<!--  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!--  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE -->
+<!--  LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR -->
+<!--  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF -->
+<!--  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR -->
+<!--  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, -->
+<!--  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE -->
+<!--  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, -->
+<!--  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<!--  -->
+<!--  Sccsid @(#)lookbib.1b	1.4 (gritter) 12/12/05 -->
+<!--  -->
+<!-- 	from 4.3BSD-Tahoe lookbib.1	6.1 (Berkeley) 4/29/85 -->
+<!--  -->
+<!-- .TH LOOKBIB 1 "April 29, 1985" -->
+<CENTER>
+<H1><HR><NOBR>LOOKBIB (1B)</NOBR><HR></H1>
+</CENTER>
+<!-- ignored unsupported tag .UC -->
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+indxbib, lookbib - (BSD) build inverted index for a bibliography, find references in a bibliography
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Files</A><BR>
+<A HREF=#4>See Also</A><BR>
+<A HREF=#5>Notes</A><BR>
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<B>/usr/ucb/indxbib</B> <I>database</I> ...
+<BR>
+<B>/usr/ucb/lookbib</B> [<B>-n</B>] <I>database</I>
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Indxbib</I> makes an inverted index to the named
+<I>databases</I> (or files) for use by
+<I>lookbib</I>(1B)
+and
+<I>refer</I>(1B).
+These files contain bibliographic references
+(or other kinds of information) separated by blank lines.
+<P>
+A bibliographic reference is a set of lines,
+constituting fields of bibliographic information.
+Each field starts on a line beginning with a &#39;&#39;%&#39;&#39;,
+followed by a key-letter, then a blank,
+and finally the contents of the field,
+which may continue until the next line starting with &#39;&#39;%&#39;&#39;.
+<P>
+<I>Indxbib</I> is a shell script that calls
+/usr/ucblib/reftools/mkey and /usr/ucblib/reftools/inv.
+The first program,
+<I>mkey,</I> truncates words to 6 characters,
+and maps upper case to lower case.
+It also discards words shorter than 3 characters,
+words among the 100 most common English words,
+and numbers (dates) &lt; 1900 or &gt; 2000.
+These parameters can be changed; see page 4 of the
+<I>Refer</I> document by Mike Lesk.
+The second program,
+<I>inv,</I> creates an entry file (.ia),
+a posting file (.ib), and a tag file (.ic),
+all in the working directory.
+<P>
+<I>Lookbib</I> uses an inverted index made by
+<I>indxbib</I> to find sets of bibliographic references.
+It reads keywords typed after the &#39;&#39;&gt;&#39;&#39; prompt on the terminal,
+and retrieves records containing all these keywords.
+If nothing matches, nothing is returned except another &#39;&#39;&gt;&#39;&#39; prompt.
+<P>
+<I>Lookbib</I> will ask if you need instructions, and will print some brief information if
+you reply &#39;&#39;y&#39;&#39;.  The &#39;&#39;-n&#39;&#39; flag turns off the prompt for instructions.
+<P>
+It is possible to search multiple databases,
+as long as they have a common index made by
+<I>indxbib.</I> In that case, only the first argument given to
+<I>indxbib</I> is specified to
+<I>lookbib.</I> <P>
+If
+<I>lookbib</I> does not find the index files (the .i[abc] files),
+it looks for a reference file with the same name as the argument,
+without the suffixes.
+It creates a file with a &#39;.ig&#39; suffix, suitable for use with
+<I>fgrep.</I> It then uses this fgrep file to find references.
+This method is simpler to use, but the .ig file is slower to use
+than the .i[abc] files, and does not allow the use of multiple reference files.
+</BLOCKQUOTE>
+<A name=3>
+
+     <H3>FILES</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>x</I>.ia, <I>x</I>.ib, <I>x</I>.ic, where
+<I>x</I> is the first argument, or if these are not present, then
+<I>x</I>.ig, <I>x</I> </BLOCKQUOTE>
+<A name=4>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+refer(1B), addbib(1B), sortbib(1B), roffbib(1B), lookbib(1B)
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>NOTES</H3>
+
+</A>
+<BLOCKQUOTE>
+Probably all dates should be indexed,
+since many disciplines refer to literature
+written in the 1800s or earlier.
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>LOOKBIB (1B)</TD> <TD align=right width=33%><I>12/12/05</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/refer/lookbib.1b using man macros.</FONT>
+</BODY></HTML>

@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - tbl (1b)</TITLE>
+<META NAME="keywords" CONTENT="tbl, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  t -->
+<!--  Sccsid @(#)tbl.1b	1.7 (gritter) 9/9/06 -->
+<!--  Derived from tbl(1), Unix 7th edition: -->
+<!--  Copyright(C) Caldera International Inc. 2001-2002. All rights reserved. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--    Redistributions of source code and documentation must retain the -->
+<!--     above copyright notice, this list of conditions and the following -->
+<!--     disclaimer. -->
+<!--    Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--    All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowledgement: -->
+<!--       This product includes software developed or owned by Caldera -->
+<!--       International, Inc. -->
+<!--    Neither the name of Caldera International, Inc. nor the names of -->
+<!--     other contributors may be used to endorse or promote products -->
+<!--     derived from this software without specific prior written permission. -->
+<!--  -->
+<!--  USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA -->
+<!--  INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR -->
+<!--  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!--  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE -->
+<!--  LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR -->
+<!--  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF -->
+<!--  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR -->
+<!--  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, -->
+<!--  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE -->
+<!--  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, -->
+<!--  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<CENTER>
+<H1><HR><NOBR>TBL (1B)</NOBR><HR></H1>
+</CENTER>
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+tbl - (BSD) format tables for nroff or troff
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>See Also</A><BR>
+</BLOCKQUOTE>
+<A name=4>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<B>/usr/ucb/tbl</B>
+[<B>-g</B>]
+[<B>-me</B>|<B>-mm</B>|<B>-ms</B>]
+[<B>-TX</B>]
+[<I>files</I>] ...
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Tbl</I> is a preprocessor for formatting tables for
+<I>nroff</I> or
+<I>troff</I>. The input files are copied to the standard output,
+except for lines between .TS and .TE
+command lines, which are assumed to describe tables
+and reformatted.
+With the
+<I>-mx</I> options, the respective macro packages
+are copied to the beginning of the output.
+Details are given in the reference manual.
+<P>
+As an example, letting \t represent a tab (which should
+be typed as a genuine tab)
+the input
+<TABLE cellpadding=3><!-- tsb: As an example, letting \t represent a tab (which should
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=6%>
+
+</TD><TD>
+&#46;TS
+<PRE>
+c s s
+c c s
+c c c
+l n n.
+Household Population
+Town\tHouseholds
+\tNumber\tSize
+Bedminster\t789\t3.26
+Bernards Twp.\t3087\t3.74
+Bernardsville\t2018\t3.30
+Bound Brook\t3425\t3.04
+Branchburg\t1644\t3.49
+Bridgewater\t7897\t3.81
+Far Hills\t240\t3.19
+&#46;TE
+</TD></TR>
+<TR><TD colspan=2>
+</PRE>
+yields
+<!-- ignored unsupported tag .ne -->
+</TD></TR>
+<TR valign=top><TD width=6%>
+ 
+</TD><TD>
+<P><BLOCKQUOTE><TABLE bgcolor=#E0E0E0 border=1 cellspacing=0 cellpadding=3>
+<TR valign=top>
+<TD align=center colspan=3>Household Population</TD></TR>
+<TR valign=top>
+<TD align=center>Town</TD><TD align=center colspan=2>Households</TD></TR>
+<TR valign=top>
+<TD align=center>&nbsp;</TD><TD align=center>Number</TD><TD align=center>Size</TD></TR>
+<TR valign=top>
+<TD>Bedminster</TD><TD align=right>789</TD><TD align=right>3.26</TD></TR>
+<TR valign=top>
+<TD>Bernards Twp.</TD><TD align=right>3087</TD><TD align=right>3.74</TD></TR>
+<TR valign=top>
+<TD>Bernardsville</TD><TD align=right>2018</TD><TD align=right>3.30</TD></TR>
+<TR valign=top>
+<TD>Bound Brook</TD><TD align=right>3425</TD><TD align=right>3.04</TD></TR>
+<TR valign=top>
+<TD>Branchburg</TD><TD align=right>1644</TD><TD align=right>3.49</TD></TR>
+<TR valign=top>
+<TD>Bridgewater</TD><TD align=right>7897</TD><TD align=right>3.81</TD></TR>
+<TR valign=top>
+<TD>Far Hills</TD><TD align=right>240</TD><TD align=right>3.19</TD></TR>
+</TABLE></BLOCKQUOTE>
+</TD></TR>
+<!-- PP ends table -->
+<TR></TR></TABLE><P>If no arguments are given,
+<I>tbl</I> reads the standard input,
+so it may be used as a filter.
+When it is used with
+<I>eqn</I> or
+<I>neqn</I> the
+<I>tbl</I> command should be first, to minimize the volume
+of data passed through
+pipes.
+<P>
+<I>tbl</I> normally uses line drawing commands with repeated
+underline and box rule characters
+(i.e.
+<I>troff</I> &#92;l and &#92;L).
+With the
+<B>-g</B> option,
+graphic drawing commands (i.e. &#92;D) are used instead.
+<P>
+The
+<B>-TX</B> option causes
+<I>tbl</I> not to produce fractional line motions.
+</BLOCKQUOTE>
+<A name=3>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+troff(1B), eqn(1B)
+<BR>
+M. E. Lesk,
+<I>TBL.</I> </BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>TBL (1B)</TD> <TD align=right width=33%><I>9/9/06</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/tbl/tbl.1b using man macros with tbl support.</FONT>
+</BODY></HTML>

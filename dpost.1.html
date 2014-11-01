@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - dpost (1)</TITLE>
+<META NAME="keywords" CONTENT="dpost, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  -->
+<!--  CDDL HEADER START -->
+<!--  -->
+<!--  The contents of this file are subject to the terms of the -->
+<!--  Common Development and Distribution License (the "License").   -->
+<!--  You may not use this file except in compliance with the License. -->
+<!--  -->
+<!--  You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE -->
+<!--  or http://www.opensolaris.org/os/licensing. -->
+<!--  See the License for the specific language governing permissions -->
+<!--  and limitations under the License. -->
+<!--  -->
+<!--  When distributing Covered Code, include this CDDL HEADER in each -->
+<!--  file and include the License file at usr/src/OPENSOLARIS.LICENSE. -->
+<!--  If applicable, add the following below this CDDL HEADER, with the -->
+<!--  fields enclosed by brackets "[]" replaced with your own identifying -->
+<!--  information: Portions Copyright [yyyy] [name of copyright owner] -->
+<!--  -->
+<!--  CDDL HEADER END -->
+<!--   Copyright 1989 AT&T  Copyright (c) 1996 Sun Microsystems, Inc.  All Rights Reserved. -->
+<!--  -->
+<!--  Portions Copyright (c) 2007 Gunnar Ritter, Freiburg i. Br., Germany -->
+<!--  -->
+<!--  Sccsid @(#)dpost.1	1.11 (gritter) 2/7/07 -->
+<!--  -->
+<!--  from OpenSolaris dpost 1 "9 Sep 1996" "SunOS 5.11" "User Commands" -->
+<CENTER>
+<H1><HR><NOBR>DPOST (1)</NOBR><HR></H1>
+</CENTER>
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+dpost - troff postprocessor for PostScript printers
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Examples</A><BR>
+<A HREF=#4>Files</A><BR>
+<A HREF=#5>See Also</A><BR>
+<A HREF=#6>Diagnostics</A><BR>
+<A HREF=#7>Notes</A><BR>
+</BLOCKQUOTE>
+<A name=8>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<!-- ignored unsupported tag .ad -->
+<!-- ignored unsupported tag .nh -->
+<B>/usr/ucb/dpost</B>
+[<B>-c</B>&nbsp;<I>num</I>]
+[<B>-e</B>&nbsp;<I>num</I>]
+[<B>-m</B>&nbsp;<I>num</I>]
+[<B>-n</B>&nbsp;<I>num</I>]
+[<B>-o</B>&nbsp;<I>list</I>]
+[<B>-w</B>&nbsp;<I>num</I>]
+[<B>-x</B>&nbsp;<I>num</I>]
+[<B>-y</B>&nbsp;<I>num</I>]
+[<B>-F</B>&nbsp;<I>dir</I>]
+[<B>-H</B>&nbsp;<I>dir</I>]
+[<B>-L</B>&nbsp;<I>file</I>]
+[<B>-M</B>&nbsp;<I>marks</I>]
+[<B>-O</B>]
+[<B>-T</B> <I>name</I>]
+[<I>file</I>] ...
+<!-- ignored unsupported tag .ad -->
+<!-- ignored unsupported tag .hy -->
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>dpost</I> translates <I>files</I> created by
+<I>troff</I>(1B)
+into PostScript and writes the results on the standard output.
+If no
+<I>files</I> are specified, or if - is one of the input <I>files</I>,
+the standard input
+is read.
+The following options are accepted:
+<TABLE cellpadding=3><!-- tsb: <I>dpost</I> translates <I>files</I> created by
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-c</B><I> num</I>
+</TD><TD valign=bottom>
+Print <I>num</I> copies of each page.
+By default
+only one copy is printed.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-e</B><I> num</I>
+</TD><TD valign=bottom>
+Sets the text encoding level to <I>num</I>.
+The recognized choices are
+digits between 0 and 5.
+<B>0</B> uses the PostScript <B>ashow</B> operator, and produces
+output essentially identical to previous versions of <I>dpost</I>.
+<B>1</B> also uses <B>ashow</B> but integrates motion commands
+with text commands.
+<B>2</B> uses the PostScript <B>awidthshow</B> operator,
+computing space widths in PostScript.
+<B>3</B> also uses <B>awidthshow</B>
+but computes space widths in <I>dpost</I>.
+<B>4</B> uses <B>ashow</B>, storing position as differences.
+<B>5</B> emits the same commands as 4
+but in a binary PostScript Level 2 representation.
+The default is 3 with the <B>ps</B> device.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-m</B><I> num</I>
+</TD><TD valign=bottom>
+Magnify each logical page by the factor <I>num</I>.
+Pages are scaled
+uniformly about the origin,
+which is located near the upper left corner of each page.
+The default
+magnification is <B>1.0</B>.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-n</B><I> num</I>
+</TD><TD valign=bottom>
+Print <I>num</I> logical pages on each piece of paper, where <I>num</I>
+can be any positive integer.
+By default, <I>num</I> is set to <B>1</B>.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-o</B><I> list</I>
+</TD><TD valign=bottom>
+Print those pages for which numbers are given in the comma-separated
+<I>list</I>.
+The list
+contains single numbers <I>N</I> and ranges <I>N1</I><B>-</B><I>N2.</I>
+A missing <I>N1</I> means the lowest
+numbered page, a missing <I>N2</I> means the highest.
+The page range is
+an expression of logical pages rather than physical sheets of paper.
+For example, if you are printing two logical
+pages to a sheet, and you specified a range of <B>4</B>, then two sheets
+of paper would print, containing four page layouts.
+If you specified a
+page range of <B>3-4</B>, when requesting
+two logical pages to a sheet; then <I>only</I> page 3 and page 4 layouts
+would print, and they would appear on one physical sheet of paper.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-p</B><I> mode</I>
+</TD><TD valign=bottom>
+Print <I>files</I> in either portrait or landscape <I>mode</I>.
+Only
+the first character of <I>mode</I> is significant.
+The default
+<I>mode</I> is portrait.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-w</B><I> num</I>
+</TD><TD valign=bottom>
+Set the line width used to implement <I>troff</I> graphics commands to
+<I>num</I>
+points, where a point is approximately 1/72 of an inch.
+By default,
+<I>num</I> is set to <B>0.3</B> points.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-x</B><I> num</I>
+</TD><TD valign=bottom>
+Translate the origin <I>num</I> inches along the positive x axis.
+The
+default coordinate system
+has the origin fixed near the upper left corner of the page, with
+positive x to the right and positive y down the page.
+Positive
+<I>num</I> moves everything right.
+The default offset
+is <B>0</B> inches.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-y</B><I> num</I>
+</TD><TD valign=bottom>
+Translate the origin <I>num</I> inches along the positive y axis.
+Positive <I>num</I> moves text up the page.
+The default offset is
+<B>0</B>.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-F</B><I> dir</I>
+</TD><TD valign=bottom>
+Use <I>dir</I> as the font directory.
+The default <I>dir</I> is
+<B>/usr/ucblib/doctools/font</B>, and <I>dpost</I> reads binary font files from
+directory <B>/usr/ucblib/doctools/font/devps</B>.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-H</B><I> dir</I>
+</TD><TD valign=bottom>
+Use <I>dir</I> as the host resident font directory.
+Files in this
+directory should be complete
+PostScript font descriptions, and must be assigned a name that
+corresponds to the appropriate two-character <I>troff</I> font name.
+Each font file is copied to the output file only when needed
+and at most once during each job.
+There is no default directory.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-L</B><I> file</I>
+</TD><TD valign=bottom>
+Use <I>file</I> as the PostScript prologue which, by default, is
+<B>/usr/lib/lp/postscript/dpost.ps</B>.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-M </B><I>marks</I>
+</TD><TD valign=bottom>
+Print marks (in combination with the <B>trimat</B> <I>troff</I> request).
+Valid types of <I>marks</I> are:
+<B>cutmarks</B>,
+<B>registrationmarks</B>,
+<B>startargets</B>,
+<B>colorbars</B>,
+and
+<B>all</B>.
+Mark names can be abbreviated and combined by colons,
+e.g. <B>-Mcut:reg</B> will print cut marks and registration marks.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-O</B>
+</TD><TD valign=bottom>
+Disables PostScript picture inclusion.
+A recommended option when
+<I>dpost</I> is run by a spooler in a networked environment.
+</TD></TR>
+<TR valign=top><TD width=15% nowrap>
+<B>-T</B><I> name</I>
+</TD><TD valign=bottom>
+Use font files for device <I>name</I> as the best description of
+available PostScript fonts.
+By default, <I>name</I> is set to <B>ps</B> and <I>dpost</I> reads
+files from <B>/usr/ucblib/doctools/font/devps</B>.
+</TD></TR>
+<!-- PP ends table -->
+<TR></TR></TABLE><P>The <I>files</I> should be prepared by <I>troff</I>.
+The default font
+files in <B>/usr/ucblib/doctools/font/devps</B> produce the best output.
+They assume a resolution of 72000 dpi, and can be used to format files by
+adding the <B>-Tps</B> option to the <I>troff</I> call.
+<P>
+<I>dpost</I> makes no assumptions about resolutions.
+The first
+<B>x&nbsp;res</B> command sets the resolution used to translate the input
+<I>files</I>, the <B>DESC</B> file, usually
+<B>/usr/ucblib/doctools/font/devps/DESC</B>,
+defines the resolution used in
+the binary font files, and the PostScript prologue is responsible for
+setting up an appropriate
+user coordinate system.
+</BLOCKQUOTE>
+<A name=3>
+
+     <H3>EXAMPLES</H3>
+
+</A>
+<BLOCKQUOTE>
+<B>pic </B><B>file</B><B> | tbl | eqn | troff </B><B>-mm</B><B>
+</B><B>-Tps</B><B> | dpost</B>
+</BLOCKQUOTE>
+<A name=4>
+
+     <H3>FILES</H3>
+
+</A>
+<BLOCKQUOTE>
+/usr/ucblib/doctools/font/devps/*
+<BR>
+/usr/ucblib/doctools/font/devpost/charlib/*
+<BR>
+/usr/ucblib/doctools/font/devpost/postscript/dpost.ps
+<BR>
+/usr/ucblib/doctools/font/devpost/postscript/color.ps
+<BR>
+/usr/ucblib/doctools/font/devpost/postscript/cutmarks.ps
+<BR>
+/usr/ucblib/doctools/font/devpost/postscript/draw.ps
+<BR>
+/usr/ucblib/doctools/font/devpost/postscript/forms.ps
+<BR>
+/usr/ucblib/doctools/font/devpost/postscript/ps.requests
+<BR>
+/usr/ucblib/doctools/tmac/pictures
+<BR>
+/usr/ucblib/doctools/tmac/color
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+troff(1B)
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>DIAGNOSTICS</H3>
+
+</A>
+<BLOCKQUOTE>
+The following exit values are returned:
+<TABLE cellpadding=3><!-- tsb: The following exit values are returned:
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=10% nowrap>
+<B></B><B>0</B>
+</TD><TD valign=bottom>
+Successful completion.
+</TD></TR>
+<TR valign=top><TD width=10% nowrap>
+<B>non-zero</B>
+</TD><TD valign=bottom>
+An error occurred.
+</TD></TR>
+<TR></TR></TABLE><P></BLOCKQUOTE>
+<A name=7>
+
+     <H3>NOTES</H3>
+
+</A>
+<BLOCKQUOTE>
+Although <I>dpost</I> can handle files formatted for any device,
+emulation is expensive and can easily double the print time and the
+size of the output file.
+No attempt has been made to
+implement the character sets or fonts available on all devices
+supported by <I>troff</I>.
+Missing characters will be replaced by white
+space, and unrecognized fonts will usually default to one
+of the Times fonts (that is, <B>R</B>, <B>I</B>, <B>B</B>, or <B>BI</B>).
+<P>
+An <B>x res</B> command must precede the first <B>x init</B> command,
+and all the input <I>files</I> should have been prepared for the same
+output device.
+<P>
+Use of the <B>-T</B> option is not encouraged.
+Its only purpose is to
+enable the use of other PostScript font and device description files,
+that perhaps use different resolutions, character
+sets, or fonts.
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>DPOST (1)</TD> <TD align=right width=33%><I>2/7/07</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/troff/troff.d/dpost.d/dpost.1 using man macros.</FONT>
+</BODY></HTML>

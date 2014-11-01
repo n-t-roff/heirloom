@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - eqn (1b)</TITLE>
+<META NAME="keywords" CONTENT="eqn, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  e -->
+<!--  Sccsid @(#)eqn.1b	1.6 (gritter) 12/12/05 -->
+<!--  Derived from eqn(1), Unix 7th edition: -->
+<!--  Copyright(C) Caldera International Inc. 2001-2002. All rights reserved. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--    Redistributions of source code and documentation must retain the -->
+<!--     above copyright notice, this list of conditions and the following -->
+<!--     disclaimer. -->
+<!--    Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--    All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowledgement: -->
+<!--       This product includes software developed or owned by Caldera -->
+<!--       International, Inc. -->
+<!--    Neither the name of Caldera International, Inc. nor the names of -->
+<!--     other contributors may be used to endorse or promote products -->
+<!--     derived from this software without specific prior written permission. -->
+<!--  -->
+<!--  USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA -->
+<!--  INTERNATIONAL, INC. AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR -->
+<!--  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!--  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED. IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE -->
+<!--  LIABLE FOR ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR -->
+<!--  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF -->
+<!--  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR -->
+<!--  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, -->
+<!--  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE -->
+<!--  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, -->
+<!--  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<CENTER>
+<H1><HR><NOBR>EQN (1B)</NOBR><HR></H1>
+</CENTER>
+<!-- delim $$ -->
+<!-- .EN -->
+
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+eqn, neqn, checkeq - (BSD) typeset mathematics
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>See Also</A><BR>
+<A HREF=#4>Notes</A><BR>
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<B>/usr/ucb/eqn</B>
+[<B>-d</B><I>xy</I>]
+[<B>-f</B><I>n</I>]
+[<B>-s</B><I>n</I>]
+[<I>file</I>] ...
+<BR>
+<B>/usr/ucb/neqn</B> [<I>file</I>] ...
+<BR>
+<B>/usr/ucb/checkeq</B>
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Eqn</I> is a
+troff(1B)
+preprocessor
+for typesetting mathematics
+on a phototypesetter,
+<I>neqn</I> on terminals.
+Usage is almost always
+<P>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eqn file ... | troff
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;neqn file ... | nroff
+<P>
+If no files are specified,
+these programs
+read from the standard input.
+A line beginning with &#39;.EQ&#39; marks the start of an equation;
+the end of an equation
+is marked by a line beginning with &#39;.EN&#39;.
+Neither of these lines is altered,
+so they may be defined in macro packages
+to get
+centering, numbering, etc.
+It is also possible to set two characters as &#39;delimiters&#39;;
+subsequent text between delimiters is also treated as
+<!-- ignored unsupported tag .ul -->
+eqn
+input.
+Delimiters may be set to characters
+<I>x</I> and
+<I>y</I> with the command-line argument
+<B>-d</B><I>xy</I> or (more commonly) with
+&#39;delim
+<I>xy</I>&#39; between .EQ and .EN.
+The left and right delimiters may be identical.
+Delimiters are turned off by &#39;delim off&#39;.
+All text that is neither between delimiters nor between .EQ and .EN
+is passed through untouched.
+<P>
+The program
+<I>checkeq</I> reports missing or unbalanced delimiters and .EQ/.EN pairs.
+<P>
+Tokens within
+<I>eqn</I> are separated by
+spaces, tabs, newlines, braces, double quotes,
+tildes or circumflexes.
+Braces {} are used for grouping;
+generally speaking,
+anywhere a single character like
+<I>x</I> could appear, a complicated construction
+enclosed in braces may be used instead.
+Tilde ~ represents a full space in the output,
+circumflex ^ half as much.
+<P>
+<!-- ignored unsupported tag .vs -->
+Subscripts and superscripts are produced with the keywords
+<B>sub</B> and
+<B>sup.</B> Thus
+<I>x sub i</I> makes
+<I>x</I><SUB><I>i</I></SUB>,
+<I>a sub i sup 2</I> produces
+<I>a</I><SUB><I>i</I></SUB><SUP>2</SUP>,
+and
+<I>e sup {x sup 2 + y sup 2}</I> gives
+<I>e</I><SUP><I>x</I></SUP><SUP>2</SUP><SUP>+<I>y</I></SUP><SUP>2</SUP><SUP></SUP>.
+<P>
+Fractions are made with
+<B>over</B>: <I>a over b</I> yields <I>a</I> / <I>b</I>.
+<P>
+<B>sqrt</B> makes square roots:
+<I>1 over sqrt {ax sup 2 +bx+c}</I> results in
+1 /  sqrt <I>ax</I><SUP>2</SUP>+bx+c .
+<P>
+The keywords
+<B>from</B> and
+<B>to</B> introduce lower and upper
+limits on arbitrary things:
+<BR>
+&nbsp;lim <SUB><I>n-&gt;</I>oo</SUB> sum <SUB>0</SUB><SUP><I>n</I></SUP> <I>x</I><SUB><I>i</I></SUB>
+is made with
+<I>lim from {n-&gt; inf } sum from 0 to n x sub i.</I> <P>
+Left and right brackets, braces, etc., of the right height are made with
+<B>left</B> and
+<B>right:</B> <I>left [ x sup 2 + y sup 2 over alpha right ] ~=~1</I> produces
+[<I>x</I><SUP>2</SUP>+<I>y</I><SUP>2</SUP> / <I>alpha</I>] = 1.
+The
+<B>right</B> clause is optional.
+Legal characters after
+<B>left</B> and
+<B>right</B> are braces, brackets, bars,
+<B>c</B> and
+<B>f</B> for ceiling and floor,
+and "" for nothing at all (useful for a right-side-only bracket).
+<P>
+Vertical piles of things are made with
+<B>pile</B>, <B>lpile</B>, <B>cpile</B>, and
+<B>rpile</B>: <I>pile {a above b above c}</I> produces
+<BR>
+&nbsp;pile <I>a</I> <I>b</I> <I>c</I>.
+There can be an arbitrary number of elements in a pile.
+<B>lpile</B> left-justifies,
+<B>pile</B> and
+<B>cpile</B> center, with different vertical spacing,
+and
+<B>rpile</B> right justifies.
+<P>
+Matrices are made with
+<B>matrix</B>: <I>matrix { lcol { x sub i above y sub 2 } ccol { 1 above 2 } }</I> produces
+matrix (  <I>x</I><SUB><I>i</I></SUB> <I>y</I><SUB>2</SUB> 1 2 ).
+In addition, there is
+<B>rcol</B> for a right-justified column.
+<P>
+<!-- ignored unsupported tag .vs -->
+Diacritical marks are made with
+<B>dot</B>, <B>dotdot</B>, <B>hat</B>, <B>tilde</B>, <B>bar</B>, <B>vec</B>, <B>dyad</B>, and
+<B>under</B>: <I>x dot = f(t) bar</I> is
+<I>x</I><SUP>.</SUP> =<I>f(t)</I><SUP>&#150;</SUP> ,
+<I>y dotdot bar ~=~ n under</I> is
+<I>y</I><SUP>..</SUP> <SUP>&#150;</SUP>  = <I>n</I>_ ,
+and
+<I>x vec ~=~ y dyad</I> is
+<I>x</I><SUP>&#150;</SUP>  = <I>y</I><I>dyad</I>.
+<P>
+Sizes and font can be changed with
+<B>size</B> <I>n</I> or
+<B>size</B> <B>&#177;</B><I>n,</I> <B>roman</B>, <B>italic</B>, <B>bold</B>, and
+<B>font</B> <I>n.</I> Size and fonts can be changed globally in a document by
+<B>gsize</B> <I>n</I> and
+<B>gfont</B> <I>n</I>, or by the command-line arguments
+<B>-s</B><I>n</I> and
+<B>-f</B><I>n.</I> <P>
+Normally subscripts and superscripts are reduced by
+3 point sizes from the previous size;
+this may be changed by the command-line argument
+<B>-p</B><I>n.</I> <P>
+Successive display arguments can be lined up.
+Place
+<B>mark</B> before the desired lineup point in the first equation;
+place
+<B>lineup</B> at the place that is to line up vertically in subsequent equations.
+<P>
+Shorthands may be defined
+or existing keywords redefined with
+<B>define</B><I>:</I> <I>define thing % replacement %</I> defines a new token called
+<I>thing</I> which will be replaced by
+<I>replacement</I> whenever it appears thereafter.
+The
+<I>%</I> may be any character that does not occur in
+<I>replacement.</I> <P>
+Keywords like
+<I>sum</I> <!-- ( sum ) -->
+<!-- .EN -->
+( sum )
+<I>int</I> <!-- ( int ) -->
+<!-- .EN -->
+( int )
+<I>inf</I> <!-- ( inf ) -->
+<!-- .EN -->
+(oo)
+and shorthands like
+&gt;=
+<!-- (&gt;=) -->
+<!-- .EN -->
+(&gt;=)
+-&gt;
+<!-- (-&gt;), -->
+<!-- .EN -->
+(-&gt;),
+and
+!=
+<!-- ( != ) -->
+<!-- .EN -->
+(!=)
+are recognized.
+Greek letters are spelled out in the desired case, as in
+<I>alpha</I> or
+<I>GAMMA.</I> Mathematical words like sin, cos, log are made Roman automatically.
+<I>Troff</I>(1B)
+four-character escapes like &#92;(bs (<BLINK><BLINK>\(</BLINK>bs</BLINK>)
+can be used anywhere.
+Strings enclosed in double quotes "..."
+are passed through untouched;
+this permits keywords to be entered as text,
+and can be used to communicate
+with
+<I>troff</I> when all else fails.
+</BLOCKQUOTE>
+<A name=3>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+troff(1B), tbl(1B), ms(7), eqnchar(7B)
+<BR>
+B. W. Kernighan and L. L. Cherry,
+<!-- ignored unsupported tag .ul -->
+Typesetting Mathematics&#151;User&#39;s Guide
+<BR>
+J. F. Ossanna,
+<!-- ignored unsupported tag .ul -->
+NROFF/TROFF User&#39;s Manual
+</BLOCKQUOTE>
+<A name=4>
+
+     <H3>NOTES</H3>
+
+</A>
+<BLOCKQUOTE>
+To embolden digits, parens, etc.,
+it is necessary to quote them,
+as in &#39;bold "12.3"&#39;.
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>EQN (1B)</TD> <TD align=right width=33%><I>12/12/05</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/eqn/eqn.d/eqn.1b using man macros with eqn support.</FONT>
+</BODY></HTML>

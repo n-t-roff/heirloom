@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - mpictures (7)</TITLE>
+<META NAME="keywords" CONTENT="mpictures, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  -->
+<!--  Changes by Gunnar Ritter, Freiburg i. Br., Germany, August 2005. -->
+<!--  -->
+<!--  Derived from Plan 9 v4 /opt/unix/plan9v4/sys/man/6/mpictures -->
+<!--  -->
+<!--  Copyright (C) 2003, Lucent Technologies Inc. and others. -->
+<!--  All Rights Reserved. -->
+<!--  -->
+<!--  Distributed under the terms of the Lucent Public License Version 1.02. -->
+<!--  -->
+<!--  Sccsid @(#)mpictures.7	1.6 (gritter) 2/2/07 -->
+<CENTER>
+<H1><HR><NOBR>MPICTURES (7)</NOBR><HR></H1>
+</CENTER>
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+mpictures - picture inclusion macros
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>See Also</A><BR>
+<A HREF=#4>Diagnostics</A><BR>
+<A HREF=#5>Notes</A><BR>
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<B>troff -mpictures</B> [
+<I>options</I> ]
+<I>file ...</I> </BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Mpictures</I> macros insert PostScript pictures into
+<I>troff</I>(1B)
+documents.
+The macros are:
+<TABLE cellpadding=3><!-- tsb: <I>Mpictures</I>  -->
+<TR></TR><TR></TR>
+<TR valign=top><TD colspan=2>
+<B>.BP</B><I></I><B>source</B><I>height</I><B>width</B><I>position</I><B>offset</B><I>flags</I><B>label</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Define a frame and place a picture in it.
+Null arguments, represented by "",
+are interpreted as defaults.
+The arguments are:
+<TABLE width=100% cellpadding=3><!-- tsb: Define a frame and place a picture in it.
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=6% nowrap>
+<I>source</I> </TD><TD valign=bottom>
+Name of a PostScript picture file, optionally
+suffixed with
+(<I>n</I>) to select page number
+<I>n</I> from the file (first page by default).
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<I>height</I> </TD><TD valign=bottom>
+Vertical size of the frame, default
+<B>3.0i</B>. This argument is interpreted as a value in inches
+unless it ends with a &#39;u&#39; scale indicator.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<I>width</I> </TD><TD valign=bottom>
+Horizontal size of the frame, current line length by default.
+This argument is interpreted as a value in inches
+unless it ends with a &#39;u&#39; scale indicator.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<I>position</I> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+<B>l</B> (default),
+<B>c</B>, or
+<B>r</B> to left-justify, center, or right-justify the frame.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<I>offset</I> </TD><TD valign=bottom>
+Move the frame horizontally from the original
+<I>position</I> by this amount, default
+<B>0i</B>. </TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<I>flags</I> </TD><TD valign=bottom>
+One or more of:
+<TABLE width=100% cellpadding=3><!-- tsb: One or more of:
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>a</B><I>d</I> </TD><TD valign=bottom>
+Rotate the picture clockwise
+<I>d</I> degrees, default
+<I>d</I>=90. </TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>o</B> </TD><TD valign=bottom>
+Outline the picture with a box.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>s</B> </TD><TD valign=bottom>
+Freely scale both picture dimensions.
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>w</B> </TD><TD valign=bottom>
+White out the area to be occupied by the picture.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B>l</B>,<B>r</B>,<B>t</B>,b </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Attach the picture to the left right, top, or bottom of the frame.
+</TD></TR>
+<TR></TR></TABLE><P></TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<I>label</I> </TD><TD valign=bottom>
+Place
+<I>label</I> at distance
+<B>1.5v</B> below the frame.
+</TD></TR>
+<!-- PP ends table -->
+<TR></TR></TABLE><P>If there&#39;s room,
+<B>.BP</B> fills text around the frame.
+Everything destined for either side of the frame
+goes into a diversion to be retrieved when the accumulated
+text sweeps past the trap set by
+<B>.BP</B> or when the diversion is explicitly closed
+by
+<B>.EP</B>. </TD></TR>
+<TR valign=top><TD colspan=2>
+<B>.PI</B><I> source height</I><B>,</B><I>width</I><B>,</B><I>yoffset</I><B>,</B>xoffset<B>flags.</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+This low-level macro, used by
+<B>.BP</B>, can help do more complex things.
+The two arguments not already described are:
+<TABLE width=100% cellpadding=3><!-- tsb: This low-level macro, used by
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD colspan=2>
+<I>xoffset</I> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Offset the frame from the left margin by this amount, default
+<B>0i</B>. This argument is interpreted as a value in inches
+unless it ends with a &#39;u&#39; scale indicator.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<I>yoffset</I> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Offset the frame from the current baseline,
+measuring positive downward, default
+<B>0i</B>. This argument is interpreted as a value in inches
+unless it ends with a &#39;u&#39; scale indicator.
+</TD></TR>
+<TR></TR></TABLE><P></TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>.EP</B> </TD><TD valign=bottom>
+End a picture started by
+<B>.BP</B>; <B>.EP</B> is usually called implicitly by a trap
+at frame bottom.
+</TD></TR>
+<TR><TD colspan=2>
+If a PostScript file lacks page-delimiting comments,
+the entire file is included.
+If no
+<B>%%BoundingBox</B> comment is present, the picture is
+assumed to fill an 8.5&#215;11-inch page.
+Nothing prevents the picture from being placed off the page.
+</TD></TR>
+<TR><TD colspan=2>
+The &#39;.psbb&#39;
+<I>troff</I> request can be used to read the
+<B>%%BoundingBox</B> comment for further processing, as in
+<P>
+</TD></TR>
+<TR><TD width=6%>&nbsp;</TD><TD>
+<PRE>
+&#46;psbb picture.eps
+&#46;nr scale 4
+&#46;nr y (&#92;n[ury]p-&#92;n[lly]p)/&#92;n[scale]
+&#46;nr x (&#92;n[urx]p-&#92;n[llx]p)/&#92;n[scale]
+&#46;PI picture.eps "&#92;nyu,&#92;nxu"
+&#46;sp &#92;nyu
+picture description
+</PRE>
+</TD></TR>
+<TR></TR></TABLE><P></BLOCKQUOTE>
+<A name=3>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>troff</I>(1B)
+</BLOCKQUOTE>
+<A name=4>
+
+     <H3>DIAGNOSTICS</H3>
+
+</A>
+<BLOCKQUOTE>
+A picture file that can&#39;t be read by the PostScript
+postprocessor is replaced by white space.
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>NOTES</H3>
+
+</A>
+<BLOCKQUOTE>
+A picture and associated text silently disappear if
+a diversion trap set by
+<B>.BP</B> isn&#39;t reached.
+Call
+<B>.EP</B> at the end of the document to retrieve it.
+<P>
+Macros in other packages may break the adjustments
+made to the line length and indent when text is being placed
+around a picture.
+<P>
+A missing or improper
+<B>%%BoundingBox</B> comment may cause the frame to be filled incorrectly.
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>MPICTURES (7)</TD> <TD align=right width=33%><I>2/2/07</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/troff/troff.d/tmac.d/mpictures.7 using man macros.</FONT>
+</BODY></HTML>

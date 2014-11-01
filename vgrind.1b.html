@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<TITLE>Manual Page - vgrind (1b)</TITLE>
+<META NAME="keywords" CONTENT="vgrind, Linux, Unix, Solaris, command, utility, tool, manual page, manpage,
+source, source code, open source, free software, implementation">
+<STYLE TYPE="text/css">
+<!-- BODY { max-width:480pt; }
+BODY,TD,P,BLOCKQUOTE,PRE { text-align:justify;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt; line-height:14pt; }
+H1,H2,H3,H4,H5,H6 { color:#666666; 
+	font-family:Verdana,Arial,Helvetica,sans-serif; }
+H1 { line-height:32pt; font-size:24pt; font-weight:bold; }
+H3 { line-height:20pt; font-size:16pt; font-weight:bold;
+	margin-bottom: 0px; }
+H4 { line-height:16pt; font-size:13pt; font-weight:bold;
+	margin-bottom: 0px; }
+BLOCKQUOTE { margin-top: 0px; } 
+HR { width:100%; height:1pt; border-width:0px; background-color:#AAAAAA; }
+ADDRESS { font-style:normal; } //--> </STYLE> </HEAD>
+<BODY><A NAME=top></A>
+<!--  -->
+<!--  This code contains changes by -->
+<!--       Gunnar Ritter, Freiburg i. Br., Germany, 2005. All rights reserved. -->
+<!--  -->
+<!--  Conditions 1, 2, and 4 and the no-warranty notice below apply -->
+<!--  to these changes. -->
+<!--  -->
+<!--  -->
+<!--  Copyright (c) 1980 Regents of the University of California. -->
+<!--  	All rights reserved. -->
+<!--  -->
+<!--  Redistribution and use in source and binary forms, with or without -->
+<!--  modification, are permitted provided that the following conditions -->
+<!--  are met: -->
+<!--  1. Redistributions of source code must retain the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer. -->
+<!--  2. Redistributions in binary form must reproduce the above copyright -->
+<!--     notice, this list of conditions and the following disclaimer in the -->
+<!--     documentation and/or other materials provided with the distribution. -->
+<!--  3. All advertising materials mentioning features or use of this software -->
+<!--     must display the following acknowedgement: -->
+<!--  	This product includes software developed by the University of -->
+<!--  	California, Berkeley and its contributors. -->
+<!--  4. Neither the name of the University nor the names of its contributors -->
+<!--     may be used to endorse or promote products derived from this software -->
+<!--     without specific prior written permission. -->
+<!--  -->
+<!--  THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND -->
+<!--  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE -->
+<!--  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE -->
+<!--  ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE -->
+<!--  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL -->
+<!--  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS -->
+<!--  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) -->
+<!--  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT -->
+<!--  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY -->
+<!--  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF -->
+<!--  SUCH DAMAGE. -->
+<!--  -->
+<!-- 	from 4.3BSD-Tahoe vgrind.1	6.2 (Berkeley) 5/5/86 -->
+<!-- .TH VGRIND 1 "May 5, 1986" -->
+<!--  -->
+<!--  Sccsid @(#)vgrind.1b	1.3 (gritter) 11/6/05 -->
+<!--  -->
+<CENTER>
+<H1><HR><NOBR>VGRIND (1B)</NOBR><HR></H1>
+</CENTER>
+<!-- ignored unsupported tag .UC -->
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+vgrind - (BSD) grind nice listings of programs
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Files</A><BR>
+<A HREF=#4>See Also</A><BR>
+<A HREF=#5>Notes</A><BR>
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+<!-- ignored unsupported tag .ad -->
+<!-- ignored unsupported tag .nh -->
+<B>/usr/ucb/vgrind</B>
+[<B>-2ftnxw</B>]
+[<B>-s</B><I>n</I>]
+[<B>-h&nbsp;</B><I>header</I>]
+[<B>-d&nbsp;</B><I>file</I>]
+[<B>-l&nbsp;</B><I>language</I>]
+[<B>-P&nbsp;</B><I>printer</I>]
+[<B>-T&nbsp;</B><I>device</I>]
+[<B>-o&nbsp;</B><I>list</I>]
+<I>name</I>&nbsp;...
+<!-- ignored unsupported tag .hy -->
+<!-- ignored unsupported tag .ad -->
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+<I>Vgrind</I> formats the program sources which are arguments
+in a nice style using
+<I>troff</I>(1B).
+Comments are placed in italics, keywords in bold face,
+and the name of the current function is listed down the margin of each
+page as it is encountered.
+<P>
+<I>Vgrind</I> runs in two basic modes, filter mode or regular mode.  In filter mode
+<I>vgrind</I> acts as a filter in a manner similar to
+<I>tbl</I>(1B).
+The standard input is passed directly to the standard output except
+for lines bracketed by the
+<I>troff-like</I> macros:
+<TABLE cellpadding=3><!-- tsb: <I>Vgrind</I>  -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=6%>
+.vS
+</TD><TD>
+- starts processing
+</TD></TR>
+<TR valign=top><TD width=6%>
+.vE
+</TD><TD>
+- ends processing
+</TD></TR>
+<TR><TD colspan=2>
+These lines are formatted as described above.  The output from this
+filter can be passed to
+<I>troff</I> for output.  There need be no particular ordering with
+<I>eqn</I>(1B)
+or
+<I>tbl</I>(1B).
+</TD></TR>
+<TR><TD colspan=2>
+In regular mode
+<I>vgrind</I> accepts input files, processes them, and passes them to
+<I>troff</I>(1B)
+for output. 
+</TD></TR>
+<TR><TD colspan=2>
+In both modes
+<I>vgrind</I> passes any lines beginning with a decimal point without conversion.
+</TD></TR>
+<TR><TD colspan=2>
+The options are:
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-2</B>
+</TD><TD>
+produce two-column output
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-f</B>
+</TD><TD>
+forces filter mode
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-t</B>
+</TD><TD>
+similar to the same option in
+<I>troff</I> causing formatted text to go to the standard output
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-n</B>
+</TD><TD>
+forces no keyword bolding
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-x</B>
+</TD><TD>
+outputs the index file in a &#39;&#39;pretty&#39;&#39; format.
+The index file itself is produced whenever
+<I>vgrind</I> is run with a file called
+<I>index</I> in the current directory.
+The index of function
+definitions can then be run off by giving
+<I>vgrind</I> the
+<B>-x</B> option and the file
+<I>index</I> as argument.
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-s</B>
+</TD><TD>
+specifies a point size to use on output (exactly the same as the argument
+of a .ps)
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-h</B>
+</TD><TD>
+specifies a particular header to put on every output page (default is
+the file name)
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-d</B>
+</TD><TD>
+specifies an alternate language definitions
+file (default is /usr/lib/vgrindefs)
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-l</B>
+</TD><TD>
+specifies the language to use.  Currently known are PASCAL
+(<B>-lp</B>), MODEL
+(<B>-lm</B>), C
+(<B>-lc</B> or the default),
+C++
+(<B>-lc++</B>), CSH
+(<B>-lcsh</B>), SHELL
+(<B>-lsh</B>), RATFOR
+(<B>-lr</B>), MODULA2
+(<B>-lmod2</B>), YACC
+(<B>-lyacc</B>), ISP
+(<B>-lisp</B>), and ICON
+(<B>-lI</B>). </TD></TR>
+<TR valign=top><TD width=6%>
+<B>-P</B>
+</TD><TD>
+specifies that output is directed to the named printer.
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-T</B>
+</TD><TD>
+is passed to
+<I>troff</I> and specifies the device to use.
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-o</B>
+</TD><TD>
+is passed to
+<I>troff</I> and specifies selected pages to print.
+</TD></TR>
+<TR valign=top><TD width=6%>
+<B>-w</B>
+</TD><TD>
+Sets the size of tabulators to four instead of the default eight.
+</TD></TR>
+<TR></TR></TABLE><P></BLOCKQUOTE>
+<A name=3>
+
+     <H3>FILES</H3>
+
+</A>
+<BLOCKQUOTE>
+<!-- .ta \w'/usr/ucblib/tmac/vgrind 'u -->
+index&nbsp;&nbsp;&nbsp;file where source for index is created
+<BR>
+/usr/ucblib/tmac/vgrind&nbsp;macro package
+<BR>
+/usr/ucblib/vfontedpr&nbsp;&nbsp;&nbsp;preprocessor
+<BR>
+/usr/ucblib/vgrindefs&nbsp;&nbsp;&nbsp;language descriptions
+</BLOCKQUOTE>
+<A name=4>
+
+     <H3>SEE ALSO</H3>
+
+</A>
+<BLOCKQUOTE>
+troff(1B)
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>NOTES</H3>
+
+</A>
+<BLOCKQUOTE>
+Vfontedpr assumes that a certain programming style is followed:
+<P>
+For
+<B>C</B> and
+<B>C++</B> - function names can be preceded on a line only by spaces, tabs, or an
+asterisk.  The parenthesized arguments must also be on the same line.
+<P>
+For
+<B>PASCAL</B> - function names need to appear on the same line as the keywords
+<I>function</I> or
+<I>procedure.</I> <P>
+For
+<B>MODEL</B> - function names need to appear on the same line as the keywords
+<I>is</I> <I>beginproc.</I> <P>
+If these conventions are not followed, the indexing and marginal function
+name comment mechanisms will fail.
+<P>
+More generally, arbitrary formatting styles for programs mostly look bad.
+The use of spaces to align source code fails miserably; if you plan to
+<I>vgrind</I> your program you should use tabs.  This is somewhat inevitable since the
+font used by
+<I>vgrind</I> is variable width.
+<P>
+The mechanism of ctags in recognizing functions should be used here.
+<P>
+Filter mode does not work in documents using the -me or -ms macros.
+(So what use is it anyway?)
+<P>
+Written by Dave Presotto &amp; William Joy.
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Heirloom Documentation Tools</I></TD> <TD width=33% align=center>VGRIND (1B)</TD> <TD align=right width=33%><I>11/6/05</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by a modified version of <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.07</A> from heirloom-doctools-080407/vgrind/vgrind.1b using man macros.</FONT>
+</BODY></HTML>
