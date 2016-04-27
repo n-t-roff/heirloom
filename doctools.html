@@ -56,9 +56,15 @@ and is thus suitable for small system distributions.
 It has been enhanced to generate <hl>UTF-8 output.</hl>
 <p>
 <hl><i>troff</i></hl>
-generates <hl>PostScript output</hl>
+generates <hl>PostScript</hl> or <hl>HTML</hl> output
 from the same document source code as <i>nroff.</i>
 Thus a special use of it is to prepare manual pages for printing.
+<hl><i>troff</i></hl> can add a table of contents with hyperlinks
+and PDF bookmarks to manual pages (see
+<a href="doctools/man.7.pdf"><i>man.7</i></a>
+and
+<a href="doctools/mdoc.7.pdf"><i>mdoc.7</i></a>).
+<p>
 <i>troff</i> is a general-purpose typesetting processor, though.
 Significant features that have been added in this implementation are:
 <ul>
@@ -143,6 +149,7 @@ and
 <hl>local variables</hl> per macro instance.
 </li>
 </ul>
+<!--
 <p>
 The distribution contains a script to <hl>convert
 <a href="http://www.oasis-open.org/committees/office/">OpenDocument</a>
@@ -150,6 +157,7 @@ files</hl> to <i>troff</i> input.
 This allows <i>troff</i> to act as typesetting application
 in a production scheme
 where authors hand in office documents.
+-->
 <HR>
 <H3>Samples, introductory documents, manuals</H3>
 <p>
