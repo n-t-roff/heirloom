@@ -18,7 +18,7 @@ H2 { color: #666666; line-height: 24pt; font-size: 16pt; font-weight: normal;
 H3 { color: #666666; line-height: 16pt; font-size: 12pt; font-weight: bold; }
 H4 { color: #666666; line-height: 14pt; font-size: 10pt; font-weight: bold; }
 HR { width: 100%; height: 1pt; border-width: 0px; background-color: #AAAAAA; }
-HL { font-weight: bold; color: #444444 }
+.HL { font-weight: bold; color: #444444 }
 ADDRESS { font-style: normal; }
 PRE { font-size: 8pt; line-height:14pt;
 	font-family: Courier; }
@@ -48,18 +48,18 @@ which are a variant of <i>ditroff,</i>
 which, in turn, descends from the historical Unix <i>troff</i>
 that generated output for the C/A/T phototypesetter.
 <p>
-<hl><i>nroff</i></hl>
-is most prominently used to <hl>format Unix manual pages</hl>
+<span class="hl"><i>nroff</i></span>
+is most prominently used to <span class="hl">format Unix manual pages</span>
 for viewing them on a terminal.
 This implementation consumes relatively few system resources
 and is thus suitable for small system distributions.
-It has been enhanced to generate <hl>UTF-8 output.</hl>
+It has been enhanced to generate <span class="hl">UTF-8 output.</span>
 <p>
-<hl><i>troff</i></hl>
-generates <hl>PostScript</hl> or <hl>HTML</hl> output
+<span class="hl"><i>troff</i></span>
+generates <span class="hl">PostScript</span> or <span class="hl">HTML</span> output
 from the same document source code as <i>nroff.</i>
 Thus a special use of it is to prepare manual pages for printing.
-<hl><i>troff</i></hl> can add a table of contents with hyperlinks
+<span class="hl"><i>troff</i></span> can add a table of contents with hyperlinks
 and PDF bookmarks to manual pages (see
 <a href="doctools/man.7.pdf"><i>man.7</i></a>
 and
@@ -70,8 +70,8 @@ Significant features that have been added in this implementation are:
 <ul>
 <li>
 &ldquo;Plug-and-Play&rdquo; font handling:
-<i>troff</i> <hl>can access PostScript Type&nbsp;1,
-OpenType, and TrueType fonts directly,</hl>
+<i>troff</i> <span class="hl">can access PostScript Type&nbsp;1,
+OpenType, and TrueType fonts directly,</span>
 that is, it can read font metrics from <i>AFM</i>,
 OpenType, or TrueType files,
 and can instruct its <i>dpost</i> post-processor
@@ -80,80 +80,80 @@ OpenType, and TrueType files into the output it generates.
 </li>
 <li>
 Justification improvements
-include <hl>paragraph-at-once adjustment</hl>
+include <span class="hl">paragraph-at-once adjustment</span>
 using a variant of the Knuth-Plass algorithm
 originally developed for <i>TeX</i>,
 and options to decrease word spaces
 and to dynamically change the letter spacing
-as well as the glyph widths (<hl>microtypography</hl>).
+as well as the glyph widths (<span class="hl">microtypography</span>).
 </li>
 <li>
-Pairwise <hl>kerning</hl> of characters
-and letter space <hl>tracking</hl> are supported.
+Pairwise <span class="hl">kerning</span> of characters
+and letter space <span class="hl">tracking</span> are supported.
 <i>troff</i> includes a request to construct
-<hl>kerning pairs for characters from different fonts.</hl>
+<span class="hl">kerning pairs for characters from different fonts.</span>
 </li>
 <li>
-<hl>Hanging characters</hl> can be used,
+<span class="hl">Hanging characters</span> can be used,
 for example, hyphens can partially or entirely
 hang over the right margin of a document.
 </li>
 <li>
 Mechanisms
-for typesetting <hl>small capitals, old-style numerals,</hl>
-and arbitrary <hl>ligatures</hl>
+for typesetting <span class="hl">small capitals, old-style numerals,</span>
+and arbitrary <span class="hl">ligatures</span>
 e.g. using Type 1 &ldquo;expert&rdquo; or
 OpenType fonts
 are provided.
 </li>
 <li>
 Letters can be of arbitrary size,
-including <hl>fractional point sizes.</hl>
+including <span class="hl">fractional point sizes.</span>
 Individual fonts can be zoomed.
 </li>
 <li>
 Text input is processed according
 to the <i>LC_CTYPE</i> environment variable.
-With a <hl>UTF-8</hl> locale,
+With a <span class="hl">UTF-8</span> locale,
 a large set of characters is available without the need to type
 <i>troff</i> escape sequences.
 </li>
 <li>
-<hl>Hyphenation of international languages</hl> is supported
+<span class="hl">Hyphenation of international languages</span> is supported
 using the <a href="http://www.openoffice.org">OpenOffice</a> variant
 of Raph Levien's <i>LibHnj</i>,
 which is in turn based on Liang's <i>TeX</i> algorithm.
 </li>
 <li>
-International paper sizes such as <hl>A4</hl> can be configured.
+International paper sizes such as <span class="hl">A4</span> can be configured.
 </li>
 <li>
 The <i>dpost</i> post-processor
-can generate instructions for the <hl>PDF</hl> distiller
-for the inclusion of <hl>bookmarks,</hl>
-<hl>links,</hl>
+can generate instructions for the <span class="hl">PDF</span> distiller
+for the inclusion of <span class="hl">bookmarks,</span>
+<span class="hl">links,</span>
 titles, and authorship information.
 </li>
 <li>
 Most <a href="http://www.gnu.org/software/groff"><i>groff</i></a> extensions,
-like <hl>long names</hl> for requests, strings, and number registers,
+like <span class="hl">long names</span> for requests, strings, and number registers,
 are supported.
 A special <i>groff</i> compatibility mode is also provided.
 </li>
 <li>
 Other <i>troff</i> language extensions include
-a <hl>string search</hl> request,
-<hl>output line traps,</hl>
-<hl>floating-point registers,</hl>
+a <span class="hl">string search</span> request,
+<span class="hl">output line traps,</span>
+<span class="hl">floating-point registers,</span>
 and
-<hl>local variables</hl> per macro instance.
+<span class="hl">local variables</span> per macro instance.
 </li>
 </ul>
 <!--
 <p>
-The distribution contains a script to <hl>convert
+The distribution contains a script to <span class="hl">convert
 <a href="http://www.oasis-open.org/committees/office/">OpenDocument</a>
-files</hl> to <i>troff</i> input.
+files</span> to <i>troff</i> input.
 This allows <i>troff</i> to act as typesetting application
 in a production scheme
 where authors hand in office documents.
